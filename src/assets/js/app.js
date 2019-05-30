@@ -1,4 +1,4 @@
-  // Your web app's Firebase configuration
+  // Configuración de firebase
   const firebaseConfig = {
     apiKey: "AIzaSyAqOgt1aoq6vdZI9xj02lXTlBLwGv4BxRQ",
     authDomain: "red-social-2019.firebaseapp.com",
@@ -8,9 +8,22 @@
     messagingSenderId: "941875629921",
     appId: "1:941875629921:web:a49d8e85f35e7c70"
   };
-  // Initialize Firebase
+  // Inicializando Firebase
   firebase.initializeApp(firebaseConfig);
-
+  
+  document.getElementById('root').innerHTML = 
+  `
+  <div class="container">
+    <form action="">
+      <h2>Formulario de login</h2>
+      <input type="text" placeholder="&#128272; Correo" name="correo">
+      <input type="password" placeholder="&#128272; Contraseña" name="clave">
+      <input type="submit" value="Registrarse">
+      <input type="submit" id="buttonGoogle" value="Entrar con Google">
+    </form>
+  </div>
+  `;
+  
   document.getElementById('buttonGoogle').addEventListener('click', () => {
     authGoogle();
   });
@@ -58,5 +71,4 @@ user.sendEmailVerification().then(function() {
 });
 }
 
-  }
 

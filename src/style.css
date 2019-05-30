@@ -6,7 +6,7 @@
 }
 
 body{
-    background: gray;
+    background: #FFFF6B;
     display: flex;
     min-height: 100vh;
 }
@@ -15,7 +15,7 @@ form{
     margin: auto;
     width: 50%;
     max-width: 500px;
-    background: #F3F3F3;
+    background: #D4E157;
     padding: 30px;
     border: 1px solid rgba(0,0,0,0.2);
 }
@@ -24,6 +24,10 @@ h2{
     text-align:center;
     margin-bottom: 20px;
     color: rgba(0,0,0,0.5);
+}
+
+#buttonGoogle{
+    padding: #A0AF22;
 }
 
 input{
