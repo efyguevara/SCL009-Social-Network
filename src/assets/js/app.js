@@ -42,4 +42,21 @@
         console.log(credential);
         // ...
       });
+
   }
+
+//Agregando función para entrar con correo electrónico
+
+ function verificar(){
+  
+  var user = firebase.auth().currentUser;
+
+user.sendEmailVerification().then(function() {
+  // Email sent.
+}).catch(function(error) {
+  // An error happened.
+});
+}
+
+  }
+
