@@ -42,6 +42,7 @@
         console.log(credential);
         // ...
       });
+
   }
 
 //Agregando función para entrar con correo electrónico
@@ -56,3 +57,6 @@ user.sendEmailVerification().then(function() {
   // An error happened.
 });
 }
+
+  }
+
