@@ -1,8 +1,7 @@
 export const initFirebase = () => {
-
     
 // Configuración autentificación de usuario de firebase
-  const firebaseConfig = {
+  let firebaseConfig = {
     apiKey: "AIzaSyAqOgt1aoq6vdZI9xj02lXTlBLwGv4BxRQ",
     authDomain: "red-social-2019.firebaseapp.com",
     databaseURL: "https://red-social-2019.firebaseio.com",
@@ -12,6 +11,7 @@ export const initFirebase = () => {
     appId: "1:941875629921:web:a49d8e85f35e7c70"
   };
   // Inicializando Firebase
+  
   firebase.initializeApp(firebaseConfig);
 
 }

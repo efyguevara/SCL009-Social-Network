@@ -4,11 +4,11 @@
   "description": "Red social\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[La mejor red social 009",
   "main": "src/index.html",
   "scripts": {
-  "test": "jest --coverage",
-  "eslint": "eslint --ext .js src/ test/",
-  "htmlhint": "htmlhint src/*.html",
-  "pretest": "npm run eslint && npm run htmlhint",
-  "deploy": "gh-pages -d /src"
+    "test": "jest --coverage",
+    "eslint": "eslint --ext .js src/ test/",
+    "htmlhint": "htmlhint src/*.html",
+    "pretest": "npm run eslint && npm run htmlhint",
+    "deploy": "gh-pages -d /src"
   },
   "repository": {
     "type": "git",
