@@ -1,5 +1,3 @@
-
-
 export function authGoogle() {
   let provider = new firebase.auth.GoogleAuthProvider();
   authentication(provider);
@@ -30,16 +28,65 @@ function authentication(provider) {
 
 }
 
+//Función que registrar al usuario
+export function registrar(){
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
 
+firebase.auth().createUserWithEmailAndPassword(email, password)
 
-//Agregando función para entrar con correo electrónico.
-export function verificar() {
+.then(function(){
+  verificar();
+  
+})
+.catch(function(error) {
+ 
+  //Si ocurre un error
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log(errorCode);
+  console.log(errorMessage);
 
-  var user = firebase.auth().currentUser;
+});
+}
+/*
+//Agregando función que observa el registro del usuario
+function observador(){
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("Existe usuario activo");
+      aparece(user);
 
-  user.sendEmailVerification().then(function () {
-    // Email sent.
-  }).catch(function (error) {
-    // An error happened.
+      let displayName = user.displayName;
+      let email = user.email;
+
+      console.log("*****************");
+      console.log(user.emailVerified);
+      console.log("*****************");
+
+      let emailVerified = user.emailVerified;
+      let photoUrl = user.photoURL;
+      let uid = user.uid; 
+      let providerData = user.providerData;
+      // User is signed in.
+    } else {
+      // No user is signed in.
+      console.log("No existe usuario activo");
+
+    }
   });
+}*/
+
+
+function verificar(){
+  
+let user = firebase.auth().currentUser;
+
+user.sendEmailVerification().then(function() {
+  //Envía al correo
+  console.log("Enviando correo...");
+}).catch(function(error) {
+  //Si ocurre un error
+  console.log(error);
+});
 }
