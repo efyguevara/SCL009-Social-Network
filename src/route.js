@@ -18,7 +18,7 @@ export const showScreen = (hash) => {
             screenAuth();
             break;
         default :
-            document.getElementById('root').innerHTML = `<p>Error 404</p>`
+            rootContainer.innerHTML = `<p>Error 404</p>`
     }
 }
 
