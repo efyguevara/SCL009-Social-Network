@@ -1,6 +1,8 @@
-import { initRouter } from './route.js'
+import { initFirebase } from "./assets/js/initFirebase.js";
+import { initRouter } from './route.js';
 
 const init = () => {
+    initFirebase();
     initRouter();
 }
 
