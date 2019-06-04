@@ -1,6 +1,8 @@
 // Pantalla que muestra el formulario de ingreso.
 import { checkin } from '../assets/js/authFirebase.js';
 import { authGoogle } from '../assets/js/authFirebase.js';
+//import { validateLogin } from './asets/js/validation/validateLogin.js'
+
 
 export const screenAuth = () => {
   document.getElementById('root').innerHTML =
