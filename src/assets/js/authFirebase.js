@@ -1,9 +1,9 @@
-export function authGoogle() {
+export const authGoogle = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
   authentication(provider);
 }
 
-function authentication(provider) {
+const authentication = (provider) => {
   firebase.auth().signInWithPopup(provider).then(function (result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     let token = result.credential.accessToken;
@@ -18,8 +18,8 @@ function authentication(provider) {
     let errorMessage = error.message;
     console.log(errorMessage);
     // The email of the user's account used.
-    let email = error.email;
-    console.log(email);
+    let mail = error.mail;
+    console.log(mail);
     // The firebase.auth.AuthCredential type that was used.
     let credential = error.credential;
     console.log(credential);
@@ -28,27 +28,39 @@ function authentication(provider) {
 
 }
 
-//Función que registrar al usuario
-export function registrar(){
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
 
-firebase.auth().createUserWithEmailAndPassword(email, password)
 
-.then(function(){
-  verificar();
-  
-})
-.catch(function(error) {
- 
-  //Si ocurre un error
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(errorCode);
-  console.log(errorMessage);
 
-});
+//Función que registra al usuario con correo y contraseña;
+export const checkin = (email, password) => {
+  console.log("checkin");
+  console.log(email);
+  console.log(password);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(function () {
+    // const verificar = () => {
+        let user = firebase.auth().currentUser;
+
+        user.sendEmailVerification().then(function () {
+          //Envía al correo
+          console.log("Enviando correo...");
+        }).catch(function (error) {
+          //Si ocurre un error
+          console.log(error);
+        });
+      // }
+    })
+
+    .catch(function (error) {
+      //Si ocurre un error
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
 }
+
+
 /*
 //Agregando función que observa el registro del usuario
 function observador(){
@@ -66,7 +78,7 @@ function observador(){
 
       let emailVerified = user.emailVerified;
       let photoUrl = user.photoURL;
-      let uid = user.uid; 
+      let uid = user.uid;
       let providerData = user.providerData;
       // User is signed in.
     } else {
@@ -77,16 +89,3 @@ function observador(){
   });
 }*/
 
-
-function verificar(){
-  
-let user = firebase.auth().currentUser;
-
-user.sendEmailVerification().then(function() {
-  //Envía al correo
-  console.log("Enviando correo...");
-}).catch(function(error) {
-  //Si ocurre un error
-  console.log(error);
-});
-}
