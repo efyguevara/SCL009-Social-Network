@@ -61,13 +61,24 @@ export const checkin = (email, password) => {
 }
 
 
-/*
+
 //Agregando función que observa el registro del usuario
-function observador(){
+export const observer = () => {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       console.log("Existe usuario activo");
-      aparece(user);
+      //aparece(user);
+
+     // let user = user;
+  let contenido = document.getElementById("root");
+  if(user.emailVerified){
+      contenido.innerHTML = 
+`
+<p>Bienvenido</p>
+<button onclick="cerrar()">Cerrar sesión</button>
+`;
+//cerrar();
+  }
 
       let displayName = user.displayName;
       let email = user.email;
@@ -84,8 +95,20 @@ function observador(){
     } else {
       // No user is signed in.
       console.log("No existe usuario activo");
-
+     // window.location.hash="";
     }
   });
-}*/
+}
+
+
+function cerrar(){
+  firebase.auth().signOut().then(function() {
+    console.log("Saliendo...");
+    // Sign-out successful.
+    window.location.hash="#/login";
+  }).catch(function(error) {
+    console.log(error);
+    // An error happened.
+  });
+}
 
