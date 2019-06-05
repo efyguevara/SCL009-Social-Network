@@ -2,15 +2,17 @@
 
 // tienes una function  --> fx   para crear el usuario
 //  en el dom cuando haya click en el boton  se van a validar los datos primero
-// si se validan los datos entonces si se creara el usuario osea corre esta funcion -->
+// si se validan los datos entonces si se creara el usuario osea corre esta funcion
 
-export const validateLogin = (email) => {
-    if (email === '' || email.length === 0 || typeof(email) === "undefined") {
+export const validateLogin = (email, password) => {
+    if (email === "" || email.length === 0 || password.length<6 || password === "") {
         return false;
-    }
+    }else{
+        return true;
+      }
 }
 
-
+//typeof(email) === "undefined" ||
 // Expresiones regulares para testear mail.
 
 // export const validateEmail = (email) => {
