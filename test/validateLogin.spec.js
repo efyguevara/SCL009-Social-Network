@@ -1,18 +1,17 @@
-import { validateLogin } from "./src/assets/js/validations/validateLogin.js";
-import { validateEmail } from "./src/assets/js/validations/validateLogin.js";
+import { validateLogin } from '../src/assets/js/validateLogin.js';
 
-
-describe("validateLogin", () => {
-    it ("deberia retornar false en caso de que el campo este vacio", () => {
-        expect(validateLogin("", "123456").toBe(false));
-        expect(validateLogin("jdijdi", "").toBe(false));
+describe('función validate', () =>{
+    it('debería retornar false', () =>{
+        expect(validateLogin('', '123456')).toBe(false);
+        expect(validateLogin('agatha@agatha.com', '')).toBe(false);
+        expect(validateLogin('','')).toBe(false);
+        expect(validateLogin('agatha@agatha.com', '123456')).toBe(true);
     });
-
-})
+});
 
 describe("validateEmail", () => {
-    it("xxxxxx", () => {
-        expect(validateEmail("nosoyuncorreo.com").toBe(false));
+    it("deberia retornar false en caso de que el correo no tenga @", () => {
+        expect(validateEmail("nosoyuncorreo.com")).toBe(false);
     });
 })
 
