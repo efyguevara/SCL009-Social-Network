@@ -1,15 +1,13 @@
 // Pantalla que muestra el formulario de ingreso.
 import { checkin } from '../assets/js/authFirebase.js';
 import { authGoogle } from '../assets/js/authFirebase.js';
-//import { validateLogin } from './asets/js/validation/validateLogin.js'
-
 
 export const screenAuth = () => {
   document.getElementById('root').innerHTML =
   `<div class="center">
-  <!-- <a href="#"> <img src="img/logoProvisional.png" alt="Logo Pet Lovers"></a> -->
+  <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
 </div>
-<div id="containerForm" class="container">
+<div id="containerForm" class="container col-12">
   <form>
     <h2>Iniciar Sesión</h2>
     <input type="email" id="email" placeholder="&#128272; Correo" name="email" required>
@@ -18,8 +16,9 @@ export const screenAuth = () => {
     <button type="button" id="buttonGoogle" value="Entrar con Google">Entrar con Google</button>
     <button type="button" id="btn-checkin" value="Registrarse">Registrarse</button>
   </form>
+</div>
 `;
-
+// 
   // Evento para ingresar con cuenta de correo de google.
   
   document.getElementById('btn-checkin').addEventListener('click', () => {

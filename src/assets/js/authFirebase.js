@@ -100,19 +100,6 @@ export const observer = () => {
   });
 }
 
-/*function aparece(user){
-  let user = user;
-  let contenido = document.getElementById("root");
-  if(user.emailVerified){
-      contenido.innerHTML = 
-`
-<p>Bienvenido</p>
-<button onclick="cerrar()">Cerrar sesión</button>
-`;  
-  }
-
-}*/
-
 
 function cerrar(){
   firebase.auth().signOut().then(function() {
@@ -124,4 +111,3 @@ function cerrar(){
     // An error happened.
   });
 }
-
