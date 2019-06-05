@@ -14,7 +14,7 @@ export const screenAuth = () => {
     <input type="password" id="password" placeholder="&#128272; Contraseña" name="password" required>
     <button value="Entrar">Entrar</button>
     <button id="buttonGoogle" value="Entrar con Google">Entrar con Google</button>
-    <button id="btn-checkin" value="Registrarse">Registrarse</button>
+    <button type="button" id="btn-checkin" value="Registrarse">Registrarse</button>
   </form>
 `;
 // 
