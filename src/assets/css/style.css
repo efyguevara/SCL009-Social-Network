@@ -1,121 +1,65 @@
 *{
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-}
-
-#root{
-    display: grid;
-    grid-gap: .5em;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
-    color: white;
+    box-sizing: border-box;
 }
 
 body{
-    background: #26a69a;
+    background: gray;
     display: flex;
     min-height: 100vh;
 }
 
-.center{
-    justify-content: center; 
-    grid-column: 2/3;
-}
-
-#containerForm{
-    display:flex;
-    justify-content: center; 
-    width: 90%;
-    margin: 0rem;
-}
-
 form{
-    /* display: stretch; */
-    /* position: relative; */
-    Margin: 0rem;
-    border-radius: 0.5rem;
-    flex-direction: column; 
-    width: 90%;
-    background: #ffffff;
-    padding: 1.875rem;
-    border: 0.0625rem solid rgba(0,0,0,0.2);
-}
-
-img{
-    position: stretch;
-    Margin: 0rem;
-    border-radius: 0.5rem; 
-    width: 10rem;
-    height: 10rem;
-    margin: 0.5rem;
+    margin: auto;
+    width: 50%;
+    max-width: 500px;
+    background: #F3F3F3;
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.2);
 }
 
 h2{
     text-align:center;
-    margin-bottom: 1.25rem;
+    margin-bottom: 20px;
     color: rgba(0,0,0,0.5);
 }
 
-/* #buttonGoogle{
-} */
-
-input{
+input, button{
     display: block;
-    padding: 0.625rem;
+    padding: 10px;
     width: 100%;
-    margin: 1.875rem 0;
-    font-size: 1.25rem;
+    margin: 30px 0;
+    font-size: 20px;
 }
 
-button{
-    display: block;
-    padding: 0.625rem;
-    width: 100%;
-    margin: 1.875rem 0;
-    font-size: 1.25rem;background: #64d8cb;
+button[type="button"]{
+    background: linear-gradient(#FFDA63, #FFB940);
     border:0;
-    color: rgb(0, 0, 0);
+    color: brown;
     opacity: 0.8;
     cursor: pointer;
-    border-radius: 1.25rem;
+    border-radius: 20px;
     margin-bottom: 0;
 }
 
-button:hover{
+button[type="button"]:hover{
     opacity: 1;
 }
 
-button:active{
+button[type="button"]:active{
     transform: scale(0.95);
-}
-#containerForm{
-    grid-row: 2/3;
 }
 
 @media (max-width:768px){
-    .center{
-        justify-content: center; 
-        grid-column: 2/3;
-    }
     form{
-        width: 95%;
-    }
-    #containerForm{
-        grid-column: span 3;
-        grid-row: 2/-1;
+        width: 75%;
     }
 }
 
-/* @media screen and (max-width:480px){
+@media (max-width:480px){
     form{
-        width: 75%;
-        grid-column: 2/3;
+        width: 95%;
     }
-    #containerForm{
-        grid-row: 2/3;
-    }
-} */
-
-
+}
