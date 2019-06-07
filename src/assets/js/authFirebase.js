@@ -4,14 +4,14 @@ export const authGoogle = () => {
 }
 
 const authentication = (provider) => {
-  firebase.auth().signInWithPopup(provider).then(function (result) {
+  firebase.auth().signInWithPopup(provider).then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     let token = result.credential.accessToken;
     // The signed-in user info.
     let user = result.user;
     console.log(result);
     // ...
-  }).catch(function (error) {
+  }).catch((error) => {
     // Handle Errors here.
     let errorCode = error.code;
     console.log(errorCode);
@@ -25,11 +25,7 @@ const authentication = (provider) => {
     console.log(credential);
     // ...
   });
-
 }
-
-
-
 
 //Función que registra al usuario con correo y contraseña;
 export const checkin = (email, password) => {
@@ -37,21 +33,21 @@ export const checkin = (email, password) => {
   console.log(email);
   console.log(password);
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(function () {
-    // const verificar = () => {
-        let user = firebase.auth().currentUser;
+    .then(() => {
+      // const verificar = () => {
+      let user = firebase.auth().currentUser;
 
-        user.sendEmailVerification().then(function () {
-          //Envía al correo
-          console.log("Enviando correo...");
-        }).catch(function (error) {
-          //Si ocurre un error
-          console.log(error);
-        });
+      user.sendEmailVerification().then(() =>{
+        //Envía al correo
+        console.log("Enviando correo...");
+      }).catch((error) => {
+        //Si ocurre un error
+        console.log(error);
+      });
       // }
     })
 
-    .catch(function (error) {
+    .catch((error) => {
       //Si ocurre un error
       let errorCode = error.code;
       let errorMessage = error.message;
@@ -60,34 +56,35 @@ export const checkin = (email, password) => {
     });
 }
 
-
+export const login = (emailLogin, passwordLogin) => {
+  console.log("login");
+  console.log(emailLogin);
+  console.log(passwordLogin);
+  firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ...
+    });
+}
 
 //Agregando función que observa el registro del usuario
 export const observer = () => {
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log("Existe usuario activo");
-      //aparece(user);
-
-     // let user = user;
-  let contenido = document.getElementById("root");
-  if(user.emailVerified){
-      contenido.innerHTML = 
-`
-<p>Bienvenido</p>
-<button onclick="cerrar()">Cerrar sesión</button>
-`;
-//cerrar();
-  }
 
       let displayName = user.displayName;
       let email = user.email;
 
+      let emailVerified = user.emailVerified;
       console.log("*****************");
       console.log(user.emailVerified);
       console.log("*****************");
 
-      let emailVerified = user.emailVerified;
       let photoUrl = user.photoURL;
       let uid = user.uid;
       let providerData = user.providerData;
@@ -95,18 +92,15 @@ export const observer = () => {
     } else {
       // No user is signed in.
       console.log("No existe usuario activo");
-     // window.location.hash="";
     }
   });
 }
 
-
-function cerrar(){
-  firebase.auth().signOut().then(function() {
+export const closed = () => {
+  firebase.auth().signOut().then(() => {
     console.log("Saliendo...");
     // Sign-out successful.
-    window.location.hash="#/login";
-  }).catch(function(error) {
+  }).catch((error) => {
     console.log(error);
     // An error happened.
   });

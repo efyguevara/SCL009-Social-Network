@@ -1,6 +1,21 @@
-// Pantalla home muestra todas las publicaciones de amigos 'the world'
-// navbar
-// post crear y ver
-// likes, editar, eliminar
+// Pantalla que muestra el home con los posts.
+import { closed } from '../assets/js/authFirebase.js';
+import { screenLogin } from './screenLogin.js';
 
-document.getElementById('root').innerHTML = ` Lo lograroooon!!!! `;
+export const screenHome = () => {
+    document.getElementById('root').innerHTML =
+    `
+        <h1>Aqui se imprimiran los post, tambien hay que colocarle el navbar</h1>
+        <form>
+            <button type="button" id="closed" value="Cerrar">Cerrar sesión</button>
+        </form>
+    `;
+
+    // Evento para ingresar con cuenta de correo de google.
+    document.getElementById('closed').addEventListener('click', () => {
+        closed();
+        screenLogin();
+        window.location.hash = '#/login'
+    });
+    //Creando evento que llama a la función de registro
+};
