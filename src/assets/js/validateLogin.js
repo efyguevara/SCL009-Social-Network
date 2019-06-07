@@ -1,16 +1,21 @@
-export const validateLogin = (email, password) => {
-    if (email === "" || email.length === 0 || typeof(email) === "undefined"|| password.length<6 || password === "") {
+export const validateEmail = (email) => {
+    if (email === "" || email.length === 0 || !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(email)) {
         return false;
-    }else{
-        return true;
     }
+    
+    return true;
 }
 
-// Expresiones regulares para testear mail.
-export const validateEmail = (email) => {
-    if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(email)){
-        return true;
-    }else{
+export const validatePassword = (password) => {
+    if( password.length < 6 || password === ""){
         return false;
     }
+    
+    return true;
 }
+// Expresiones regulares para testear mail.
+// export const validateEmail = (email) => {
+// else{
+//         return false;
+//     }
+// }
