@@ -4,7 +4,9 @@ export const authGoogle = () => {
 }
 
 const authentication = (provider) => {
-  firebase.auth().signInWithPopup(provider).then((result) => {
+  firebase.auth().signInWithPopup(provider)
+  .then((result) => {
+    window.location.hash = '#/home';
     // This gives you a Google Access Token. You can use it to access the Google API.
     let token = result.credential.accessToken;
     // The signed-in user info.
@@ -36,10 +38,12 @@ export const checkin = (email, password) => {
     .then(() => {
       // const verificar = () => {
       let user = firebase.auth().currentUser;
-
-      user.sendEmailVerification().then(() =>{
+      window.location.hash = '#/login';
+      user.sendEmailVerification()
+      .then(() =>{
         //Envía al correo
         console.log("Enviando correo...");
+       
       }).catch((error) => {
         //Si ocurre un error
         console.log(error);
@@ -57,10 +61,13 @@ export const checkin = (email, password) => {
 }
 
 export const login = (emailLogin, passwordLogin) => {
-  console.log("login");
+  console.log('Hola');
   console.log(emailLogin);
   console.log(passwordLogin);
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
+  .then(function() {
+    window.location.hash = '#/home';
+  })
     .catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;

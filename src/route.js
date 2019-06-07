@@ -35,6 +35,8 @@ export const showScreen = (hash) => {
 export const initRouter = () => {
     window.addEventListener('load', changeRoute(window.location.hash));
     if ('onhashchange' in window) {
-        changeRoute(window.location.hash);
+        window.onhashchange = () => {
+            changeRoute(window.location.hash);
+          }
     }
 }
