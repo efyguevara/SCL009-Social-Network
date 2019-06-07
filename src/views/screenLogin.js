@@ -8,6 +8,10 @@ import { validateLogin, validateEmail } from '../assets/js/validateLogin.js';
 export const screenLogin = () => {
   document.getElementById('root').innerHTML =
   `
+  <div class="center">
+    <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
+  </div>
+  <div id="containerForm" class="container">
   <form>
     <h2>Iniciar Sesión</h2>
     <input type="email" id="email_Login" placeholder="&#128272; Correo" name="email">
@@ -19,6 +23,7 @@ export const screenLogin = () => {
 
     <button type="button" id="btn-Registro" value="Registrarse">Registrarse</button>
   </form>
+  </div>
   `;
 // 
   // Evento para ingresar con cuenta de correo de google.

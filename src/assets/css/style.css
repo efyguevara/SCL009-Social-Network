@@ -1,48 +1,81 @@
 *{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    box-sizing: border-box;
+}
+
+#root{
+    display: grid;
+    grid-gap: .5em;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    color: white;
 }
 
 body{
-    background: gray;
+    background: rgb(209, 203, 203);
     display: flex;
     min-height: 100vh;
 }
 
+.center{
+    grid-column: 2;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+#containerForm{
+    display:flex;
+    justify-content: center; 
+    margin: 0rem;
+    grid-column: 2;
+    grid-row: 2/3;
+}
+
 form{
-    margin: auto;
-    width: 50%;
-    max-width: 500px;
-    background: #F3F3F3;
-    padding: 30px;
-    border: 1px solid rgba(0,0,0,0.2);
+    Margin: 0rem;
+    border-radius: 0.5rem;
+    flex-direction: column; 
+    background: #ffffff;
+    padding: 1.875rem;
+    border: .2rem solid #26a69a;
+}
+
+img{
+    position: stretch;
+    Margin: 0rem;
+    border-radius: 0.5rem; 
+    width: 10rem;
+    height: 10rem;
+    margin: 0.5rem;
 }
 
 h2{
     text-align:center;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     color: rgba(0,0,0,0.5);
 }
 
 input, button{
     display: block;
-    padding: 10px;
+    padding: 0.625rem;
     width: 100%;
-    margin: 30px 0;
-    font-size: 20px;
+    margin: 1.875rem 0;
+    font-size: 1.25rem;
 }
 
 button[type="button"]{
-    background: linear-gradient(#FFDA63, #FFB940);
+    background: linear-gradient(#64d8cb, #03bea9);
     border:0;
-    color: brown;
+    color: rgb(0, 0, 0);
     opacity: 0.8;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     margin-bottom: 0;
 }
+
 
 button[type="button"]:hover{
     opacity: 1;
@@ -53,13 +86,37 @@ button[type="button"]:active{
 }
 
 @media (max-width:768px){
+    #root{     
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .center{
+        justify-content: center; 
+        grid-column: 3;
+    }
     form{
-        width: 75%;
+        width: 95%;
+    }
+    #containerForm{
+        grid-column: 2 / 5;
+        grid-row: 2 / 3;
     }
 }
 
-@media (max-width:480px){
+@media screen and (max-width:480px){
+    #root{     
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .center{
+        justify-content: center; 
+        grid-column: 2/3;
+    }
     form{
         width: 95%;
+    }
+    #containerForm{
+        grid-column: span 3;
+        grid-row: 2/3;
     }
 }
