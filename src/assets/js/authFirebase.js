@@ -5,52 +5,49 @@ export const authGoogle = () => {
 
 const authentication = (provider) => {
   firebase.auth().signInWithPopup(provider)
-  .then((result) => {
-    window.location.hash = '#/home';
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    let token = result.credential.accessToken;
-    // The signed-in user info.
-    let user = result.user;
-    console.log(result);
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    let errorCode = error.code;
-    console.log(errorCode);
-    let errorMessage = error.message;
-    console.log(errorMessage);
-    // The email of the user's account used.
-    let mail = error.mail;
-    console.log(mail);
-    // The firebase.auth.AuthCredential type that was used.
-    let credential = error.credential;
-    console.log(credential);
-    // ...
-  });
+    .then((result) => {
+      window.location.hash = '#/home';
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      let token = result.credential.accessToken;
+      // The signed-in user info.
+      let user = result.user;
+      console.log(result);
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      let errorCode = error.code;
+      console.log(errorCode);
+      let errorMessage = error.message;
+      console.log(errorMessage);
+      // The email of the user's account used.
+      let mail = error.mail;
+      console.log(mail);
+      // The firebase.auth.AuthCredential type that was used.
+      let credential = error.credential;
+      console.log(credential);
+      // ...
+    });
 }
 
 //Función que registra al usuario con correo y contraseña;
-export const checkin = (email, password) => {
-  console.log("checkin");
-  console.log(email);
-  console.log(password);
-  firebase.auth().createUserWithEmailAndPassword(email, password)
+export const checkin = (emailCheckin, passwordCheckin) => {
+  console.log(emailCheckin);
+  console.log(passwordCheckin);
+  firebase.auth().createUserWithEmailAndPassword(emailCheckin, passwordCheckin)
     .then(() => {
-      // const verificar = () => {
       let user = firebase.auth().currentUser;
-      window.location.hash = '#/login';
-      user.sendEmailVerification()
-      .then(() =>{
-        //Envía al correo
-        console.log("Enviando correo...");
-       
-      }).catch((error) => {
-        //Si ocurre un error
-        console.log(error);
-      });
-      // }
-    })
 
+      user.sendEmailVerification()
+        .then(() => {
+
+          //Envía al correo
+          console.log("Enviando correo...");
+        }).catch((error) => {
+          //Si ocurre un error
+          console.log(error);
+        });
+      window.location.hash = '#/login';
+    })
     .catch((error) => {
       //Si ocurre un error
       let errorCode = error.code;
@@ -61,13 +58,12 @@ export const checkin = (email, password) => {
 }
 
 export const login = (emailLogin, passwordLogin) => {
-  console.log('Hola');
   console.log(emailLogin);
   console.log(passwordLogin);
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
-  .then(function() {
-    window.location.hash = '#/home';
-  })
+    .then(() => {
+      window.location.hash = '#/home';
+    })
     .catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;
@@ -112,4 +108,3 @@ export const closed = () => {
     // An error happened.
   });
 }
-
