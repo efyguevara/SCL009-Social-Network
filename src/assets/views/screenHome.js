@@ -1,12 +1,13 @@
 // Pantalla que muestra el home con los posts.
-import { closed } from '../assets/js/authFirebase.js';
+import { closed } from '../js/authFirebase.js';
 
 export const screenHome = () => {
     document.getElementById('root').innerHTML =
     `
-        <h1>Aqui se imprimiran los post, tambien hay que colocarle el navbar</h1>
+        
         <form>
-            <button type="button" id="closed" value="Cerrar">Cerrar sesión</button>
+            <h1 class="textBlack">Aqui se imprimiran los post, tambien hay que colocarle el navbar</h1>
+            <button type="button" id="closed" value="Cerrar sesión">Cerrar sesión</button>
         </form>
     `;
 

@@ -1,23 +1,26 @@
-import { validateLogin, validateEmail } from '../src/assets/js/validateLogin.js';
+import { validateEmail, validatePassword } from '../src/assets/js/validateLogin.js';
+import { validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat } from '../src/assets/js/validateCheckin.js';
 
-describe("función validate", () =>{
-    it('debería retornar false', () =>{
-        expect(validateLogin("", "123456")).toBe(false);
-        expect(validateLogin("agatha@agatha.com", "")).toBe(false);
-        expect(validateLogin("","")).toBe(false);
-        expect(validateLogin("agatha@agatha.com", "123456")).toBe(true);
-        expect(validateLogin("agatha@agatha.com", "12345")).toBe(false);        
-    })
-})
-
-describe("función validateEmail", () => {
+describe("función validateEmail", () =>{
     it("debería retornar false", () => {
         expect(validateEmail("estonoesuncorreo.com")).toBe(false);
         expect(validateEmail("estonoesun@correo")).toBe(false);
         expect(validateEmail("estonoesuncorreocom")).toBe(false);
-        expect(validateEmail("undefined")).toBe(false);
+        expect(validateEmail("")).toBe(false);
     })
     it("debería retornar true", () => {
-        expect(validateEmail("efyguevara@gmail.com")).toBe(true);
+        expect(validateEmail("hola@laboratoria.com")).toBe(true);
     })
 })
+
+describe("función validatePassword", () => {
+    it("debería retornar false", () => {
+        expect(validatePassword("")).toBe(false);
+        expect(validatePassword("12345")).toBe(false);
+    })
+    it("debería retornar true", () => {
+        expect(validatePassword("123456")).toBe(true);
+    })
+})
+
+// Faltan test de validateEmailCheckin, validatePasswordCheckin y validatePasswordRepeat.
