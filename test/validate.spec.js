@@ -22,5 +22,3 @@ describe("función validatePassword", () => {
         expect(validatePassword("123456")).toBe(true);
     })
 })
-
-// Faltan test de validateEmailCheckin, validatePasswordCheckin y validatePasswordRepeat.

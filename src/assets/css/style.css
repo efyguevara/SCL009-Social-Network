@@ -5,7 +5,7 @@
     font-family: sans-serif;
 }
 
-#root{
+.root-container{
     display: grid;
     grid-gap: .5em;
     grid-template-columns: repeat(3, 1fr);
@@ -13,12 +13,11 @@
     color: white;
 }
 
-body{
+/*body{
     background: #ffffff;
-    /* background: rgb(209, 203, 203); */
     display: flex;
     min-height: 100vh;
-}
+}*/
 
 
 /* Estilos del formulario */
@@ -99,7 +98,7 @@ h2{
 
 /* Tamaños de pantalla */
 @media (max-width:2560px){
-    #root{     
+    .root-container{     
         grid-template-columns: repeat(15, 1fr);
     }
     form{
@@ -125,7 +124,7 @@ h2{
 }
 
 @media (max-width:1440px){
-    #root{     
+    .root-container{     
         grid-template-columns: repeat(9, 1fr);
     }
     form{
@@ -151,7 +150,7 @@ h2{
 }
 
 @media (max-width:768px){
-    #root{     
+    .root-container{     
         grid-template-columns: repeat(5, 1fr);
     }
     form{
@@ -176,7 +175,7 @@ h2{
 }
 
 @media screen and (max-width:480px){
-    #root{     
+    .root-container{     
         grid-template-columns: repeat(3, 1fr);
     }
     form{

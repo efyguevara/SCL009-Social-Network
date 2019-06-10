@@ -5,6 +5,7 @@ import { validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat} 
 export const screenAuth = () => {
   document.getElementById('root').innerHTML =
     `
+<section class="root-container">
     <div class="center">
       <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
     </div>
@@ -29,6 +30,7 @@ export const screenAuth = () => {
           <button type="button" id="return-login">Volver</button>
         </form>
     </div>
+</section>
     `;
 
   // Evento para ingresar con cuenta de correo de google.  
