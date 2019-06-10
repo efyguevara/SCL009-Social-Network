@@ -72,7 +72,7 @@ export const login = (emailLogin, passwordLogin) => {
       console.log(errorMessage);
       // ...
     });
-}
+} 
 
 //Agregando función que observa el registro del usuario
 export const observer = () => {
