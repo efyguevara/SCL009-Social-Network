@@ -25,7 +25,7 @@ export const screenLogin = () => {
           <button type="button" id="buttonGoogle" value="Iniciar sesión con Google">Iniciar sesión con Google</button>
                     
           <!-- boton para registro de nuevos usuarios -->
-          <button type="button" id="btn-checkin1">Registrarse</button>
+          <button type="button" id="btn-checkin1">Registrate</button>
       </form>
     </div>
       `;
