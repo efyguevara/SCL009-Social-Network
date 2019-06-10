@@ -38,16 +38,16 @@ export const screenAuth = () => {
     let errPassRepeat = "Las contraseñas ingresadas no coinciden";
 
     let emailCheckin = document.getElementById("email").value;
-    let passwordCheckin = document.getElementById("password").value;
-    let passwordRepeat= document.getElementById("password_repeat").value; 
+    let passwordCheckin = document.getElementById("password");
+    let passwordRepeat= document.getElementById("password_repeat"); 
 
     let resultValidateEmailCheckin = validateEmailCheckin(emailCheckin);
-    let resultValidatePasswordCheckin = validatePasswordCheckin(passwordCheckin);
-    let resultValidatePasswordRepeat = validatePasswordRepeat(passwordRepeat);
-    
+    let resultValidatePasswordCheckin = validatePasswordCheckin(passwordCheckin.value);
+    let resultValidatePasswordRepeat = validatePasswordRepeat(passwordRepeat.value, passwordCheckin.value);
+
 
     if (resultValidateEmailCheckin === true && resultValidatePasswordCheckin === true && resultValidatePasswordRepeat === true) {
-      checkin(emailCheckin, passwordCheckin);
+      checkin(emailCheckin, passwordCheckin.value);
     }
     if (resultValidateEmailCheckin === false) {
       document.getElementById("error-email-checkin").innerHTML = `${errMailCheckin}`;
@@ -58,8 +58,8 @@ export const screenAuth = () => {
     if (resultValidatePasswordRepeat === false) {
       document.getElementById("error-password-repeat").innerHTML = `${errPassRepeat}`;
       //No funciona el limpiado de campos. si las contraseñas no coinciden hay que actualizar la pagina para volver a intentarlo 
-      // passwordCheckin.innerHTML += "";
-      // passwordRepeat.innerHTML += "";
+      passwordCheckin.value = "";
+      passwordRepeat.value = "";
     }
   });
 
