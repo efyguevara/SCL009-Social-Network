@@ -27,6 +27,7 @@ describe("función validatePassword", () => {
         expect(validatePassword("123456")).toBe(true);
     })
 })
+<<<<<<< HEAD
 
 // Faltan test de validateEmailCheckin, validatePasswordCheckin y validatePasswordRepeat.
 =======
@@ -46,3 +47,5 @@ describe("función validatePassword", () => {
     })
 })
 >>>>>>> Stashed changes
+=======
+>>>>>>> 1b1db29d6dfad6ce5ddd05e38cb87e8bc1413cb5

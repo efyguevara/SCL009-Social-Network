@@ -1,133 +1,110 @@
-footer{
-    background: #FFFF6B;
-}
-
-/* Aquí van todas las class, etiquetas y id que usan esta misma letra (Rancho) */
-.site-nav, header{
-    font-family: 'Rancho', cursive;
-}
-
-.container-nav{
+.container{
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    grid-column: span 3;
-    padding: 0 0 0;
-}
-
-.nav-deep{
-    width: 100%;
 }
 
 header{
-    background: #FDD835;
-    color: #1c1c1d;
-    padding: 1em 0 1.3em 0;
+    background: #03bea9;
+    color: #ebebd3;
+    padding: 1em 0;
     position: relative;
 }
 
 header::after{
-    content: '';
+    content: "";
     clear: both;
-    display:  block;
+    display: block;
 }
 
 .logo{
-    float: left;
-    font-size:  1rem;
+    float:left;
+    font-size: 1rem;
     margin: 0;
     text-transform: uppercase;
     font-weight: 700;
 }
 
+.logo span{
+    font-weight: 300;
+}
+
 .site-nav{
-    top: 100%;
-    right: 0;
+    top:100%;
+    right:0;
     position: absolute;
-    background: #FFFF6B;
+    background: #26a69a;
     clip-path: circle(0px at top right);
-    transition: clip-path ease-in-out 700ms; /* la animación al contraer y mostrar el menú de hamburguesa */
+    transition: clip-path ease-in-out 700ms; 
 }
 
 .site-nav-open{
-    height: auto;
     clip-path: circle(150% at top right);
-
 }
 
 .site-nav ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
+margin: 0;
+padding: 0;
+list-style: none;
 }
 
 .site-nav li{
-    border-bottom: 1px solid #FFFF6B;
+    border-bottom: 1px solid #575766;
 }
 
 .site-nav li:last-child{
-    border-bottom: none;
+border-bottom: none;
 }
-/* ver el hover */
+
 .site-nav a{
-    color: #1c1c1d;
+    color:#ebedb3;
     display: block;
-    padding: 1em 1.5em;
+    padding: 2em 6em;
+    text-transform: uppercase;
     text-decoration: none;
-    font-size: 1.5em;
 }
 
 .site-nav a:hover,
 .site-nav a:focus{
-    background: #9FAE22;
-    text-decoration: underline;
+background: #e4b363;
+color:#26a69a;
 }
-/* .site-nav a:active{
-    background: #e3b363;
-    color: #464655;
-} */
 
-/* No hay iconos aún */
-/* .site-nav--icon{
-    display: inline-block;
-    font-size: 1.5em;
-    margin-right: 1em;
-    width: 1.1em;
-    text-align: right;
-    color:rgba(255,255,255, .4);
-} */
+.site-nav--icon{
+display: inline-block;
+font-size: 1.5em;
+margin-right: 1em;
+widows: 1.1em;
+text-align: right;
+color: rgba(255,255,255, .4);
+}
+
+.menu-toggle{
+    background: #26a69a;
+    padding: 1em;
+    position: absolute;
+    top: .5em;
+    right: .5em;
+}
 
 .menu-open .hamburger{
     transform: rotate(45deg);
 }
 
 .menu-open .hamburger::before{
-    opacity: 0;
+    opacity:0;
 }
 
 .menu-open .hamburger::after{
     transform: translateY(-3px) rotate(-90deg);
 }
 
-.menu-toggle{
-    background: #FDD835;
-    padding: 1em;
-    position: absolute;
-    top: 0.5em;
-    right: 0.5em;
-    border: .2em solid #ffffff;
-}
-
-.menu-toggle:active{
-    border-color: #9FAE22;
-}
-
 .hamburger,
 .hamburger::before,
 .hamburger::after{
-    content: '';
+    content: "";
     display: block;
-    background: #ffffff;
+    background: #ebebd3;
     height: 3px;
     width: 1.75em;
     border-radius: 3px;
@@ -141,11 +118,43 @@ header::after{
     transform: translateY(3px);
 }
 
-.hamburger{float: right;}
+.row:before, .row:after{
+content:"";
+display:table;
+clear: both;
+}
 
-/* vista desde pc */
+body{
+    background: #f0f8ea;
+    font-family: sans-serif;
+}
+
+[class*="col-"]{
+    float: left;
+    min-height: 7px;
+    padding: 12px;
+}
+
+.col-1{width: 8.33333333%;}
+.col-2{width: 16.666667%;}
+.col-3{width: 25%;}
+.col-4{width: 33.333333%;}
+.col-5{width: 41.666667%;}
+.col-6{width: 50%;}
+.col-7{width: 58.33%;}
+.col-8{width: 66.6666667%;}
+.col-9{width: 75%;}
+.col-10{width: 83.3333333%;}
+.col-11{width: 91.6666667%;}
+.col-12{width: 100%;}
+
+@media all and (max-width:450px){
+    [class*="col-"]{
+        width: 100%;
+    }
+}
+
 @media (min-width:700px){
-
     .menu-toggle{
         display: none;
     }
@@ -154,19 +163,19 @@ header::after{
         position: relative;
         background: transparent;
         float: right;
-        margin-right: initial;
+        margin-right: 10px;
         clip-path: initial;
     }
     .site-nav li{
-        display: inline-block;
-        border:none;
+        display:inline-block;
+        border: none;
     }
     .site-nav a{
         padding: 0;
-        margin-left: 3em;
+        margin-right: 3em;
     }
     .site-nav--icon{
-        display: none;
+        display:none;
     }
     .site-nav a:hover,
     .site-nav a:focus{
