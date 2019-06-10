@@ -6,8 +6,15 @@ export const validateEmail = (emailLogin) => {
 }
 
 export const validatePassword = (passwordLogin) => {
-    if( passwordLogin.length < 6 || passwordLogin === ""){
+    if (passwordLogin.length < 6 || passwordLogin === "") {
         return false;
     }
     return true;
+}
+
+export const validateInvalidEmail = (emailLogin, user) => {
+    if (emailLogin != user) {
+        return false
+    }
+    return true
 }
