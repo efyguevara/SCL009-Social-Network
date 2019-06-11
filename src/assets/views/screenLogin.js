@@ -5,6 +5,7 @@ import { validateEmail, validatePassword } from '../js/validateLogin.js';
 export const screenLogin = () => {
   document.getElementById('root').innerHTML =
     `
+
     <section class="root-container">
         <div class="center">
             <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
