@@ -66,6 +66,7 @@ export const login = (emailLogin, passwordLogin) => {
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
     .then(() => {
       window.location.hash = '#/home';
+      saveUserInData(user);
     })
     .catch((error) => {
       // Handle Errors here.
@@ -96,7 +97,6 @@ export const observer = () => {
       let uid = user.uid;
       let providerData = user.providerData;
       // User is signed in.
-      saveUserInData(user);
     } else {
       // No user is signed in.
       console.log("No existe usuario activo");
@@ -114,14 +114,17 @@ const saveUserInData = (user) => {
   };
   firebase.database().ref('Users/' + user.uid).set(users);
 };
-
 // Guardando los post de mis usuarios con su respectivo Uid.
-// const savePostInData = (post) => {
-//   let userPost = {
-//     uid:user.uid,
-//     text:user.post
-//   } 
-// }
+
+export const savePostInData = (post) => {
+  let userPost = {
+    // uid:user.uid,
+    // name:user.displayName,
+    // date:post.date,
+    text:post.text
+  };
+  firebase.database().ref('userPost/'+post.text).on(userPost);
+};
 
 export const closed = () => {
   firebase.auth().signOut().then(() => {
