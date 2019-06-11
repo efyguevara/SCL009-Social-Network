@@ -60,10 +60,12 @@ export const checkin = (emailCheckin, passwordCheckin) => {
 export const login = (emailLogin, passwordLogin) => {
   console.log(emailLogin);
   console.log(passwordLogin);
+
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
     .then(() => {
       window.location.hash = '#/home';
     })
+  
     .catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;
@@ -73,6 +75,7 @@ export const login = (emailLogin, passwordLogin) => {
       // ...
     });
 } 
+
 
 //Agregando función que observa el registro del usuario
 export const observer = () => {

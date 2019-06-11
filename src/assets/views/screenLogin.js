@@ -11,7 +11,7 @@ export const screenLogin = () => {
     </div>
       <div id="containerForm" class="container">
         <form>
-            <input type="email" id="email_Login" placeholder="correo@example.com" name="email">
+            <input type="email" id="email_Login" placeholder="&#9993; correo@example.com" name="email">
             <p id="error-mail" class="err"></p>
             <input type="password" id="password_Login" placeholder="&#128272; Contraseña" name="password">
             <p id="error-password" class="err"></p>

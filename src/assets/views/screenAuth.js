@@ -14,7 +14,7 @@ export const screenAuth = () => {
           <h2>Formulario de registro</h2>
           <input type="text" id="nickname" placeholder="Nombre de usuario" name="nickname">
 
-          <input type="email" id="email" placeholder="correo@example.com" name="email">
+          <input type="email" id="email" placeholder="&#9993; correo@example.com" name="email">
           <p id="error-email-checkin" class="err"></p>
 
           <input type="password" id="password" placeholder="&#128272; Contraseña" name="password">
