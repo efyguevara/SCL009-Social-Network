@@ -1,3 +1,6 @@
+import { notifyError } from '../js/notifications.js';
+
+
 export const authGoogle = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
   authentication(provider);
@@ -13,6 +16,7 @@ const authentication = (provider) => {
       let user = result.user;
       console.log(result);
       // ...
+      saveUserInData(user);
     }).catch((error) => {
       // Handle Errors here.
       let errorCode = error.code;
@@ -25,7 +29,6 @@ const authentication = (provider) => {
       // The firebase.auth.AuthCredential type that was used.
       let credential = error.credential;
       console.log(credential);
-      // ...
     });
 }
 
@@ -39,7 +42,6 @@ export const checkin = (emailCheckin, passwordCheckin) => {
 
       user.sendEmailVerification()
         .then(() => {
-
           //Envía al correo
           console.log("Enviando correo...");
         }).catch((error) => {
@@ -49,11 +51,12 @@ export const checkin = (emailCheckin, passwordCheckin) => {
       window.location.hash = '#/login';
     })
     .catch((error) => {
+
       //Si ocurre un error
       let errorCode = error.code;
       let errorMessage = error.message;
-      console.log(errorCode);
       console.log(errorMessage);
+      notifyError(errorCode, 'error-email-checkin');
     });
 }
 
@@ -64,6 +67,7 @@ export const login = (emailLogin, passwordLogin) => {
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
     .then(() => {
       window.location.hash = '#/home';
+      saveUserInData(user);
     })
   
     .catch((error) => {
@@ -72,9 +76,10 @@ export const login = (emailLogin, passwordLogin) => {
       var errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-      // ...
+      notifyError(errorCode, 'error-mail');
+      notifyError(errorCode, 'error-password');
     });
-} 
+}
 
 
 //Agregando función que observa el registro del usuario
@@ -101,6 +106,28 @@ export const observer = () => {
     }
   });
 }
+
+//   Guardando a mis usuarios en firestore automáticamente
+const saveUserInData = (user) => {
+  let users = {
+    uid: user.uid,
+    name: user.displayName,
+    email: user.email,
+    photoURL: user.photoURL,
+  };
+  firebase.database().ref('Users/' + user.uid).set(users);
+};
+// Guardando los post de mis usuarios con su respectivo Uid.
+
+export const savePostInData = (post) => {
+  let userPost = {
+    // uid:user.uid,
+    // name:user.displayName,
+    // date:post.date,
+    text:post.text
+  };
+  firebase.database().ref('userPost/'+post.text).on(userPost);
+};
 
 export const closed = () => {
   firebase.auth().signOut().then(() => {

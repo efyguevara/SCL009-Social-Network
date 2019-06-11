@@ -1,36 +1,37 @@
-// Pantalla que muestra el formulario de ingreso.
+//Pantalla que muestra el formulario de ingreso.
 import { login, authGoogle } from '../js/authFirebase.js';
 import { validateEmail, validatePassword } from '../js/validateLogin.js';
 
 export const screenLogin = () => {
   document.getElementById('root').innerHTML =
     `
-<section class="root-container">
-    <div class="center">
-      <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
-    </div>
-      <div id="containerForm" class="container">
-        <form>
-            <input type="email" id="email_Login" placeholder="&#9993; correo@example.com" name="email">
-            <p id="error-mail" class="err"></p>
-            <input type="password" id="password_Login" placeholder="&#128272; Contraseña" name="password">
-            <p id="error-password" class="err"></p>
 
-            <!-- Enlace para cambiar la contraseña -->
-            <a  href="#/resetPassword" id="rememberPassword" class="textBlack">¿Olvidaste la contraseña?</a>
+    <section class="root-container">
+        <div class="center">
+            <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
+        </div>
+        <div id="containerForm" class="container">
+            <form>
+                <input type="email" id="email_Login" placeholder="&#9993; correo@example.com" name="email">
+                <p id="error-mail" class="err"></p>
+                <input type="password" id="password_Login" placeholder="&#128272; Contraseña" name="password">
+                <p id="error-password" class="err"></p>
 
-            <!-- boton para iniciar sesion -->
-            <button type="button" id="btn-login" value="Iniciar sesión">Iniciar sesión</button>
-            
-            <!-- boton para ingresar por Google -->
-            <button type="button" id="buttonGoogle" value="Iniciar sesión con Google">Iniciar sesión con Google</button>
-                      
-            <!-- boton para registro de nuevos usuarios -->
-            <button type="button" id="btn-checkin1">Registrarse</button>
-        </form>
-      </div>
-</section>
-      `;
+                <!-- Enlace para cambiar la contraseña -->
+                <a href="#/resetPassword" id="rememberPassword" class="textBlack">¿Olvidaste la contraseña?</a>
+
+                <!-- boton para iniciar sesion -->
+                <button type="button" id="btn-login" value="Iniciar sesión">Iniciar sesión</button>
+
+                <!-- boton para ingresar por Google -->
+                <button type="button" id="buttonGoogle" value="Iniciar sesión con Google">Iniciar sesión con Google</button>
+
+                <!-- boton para registro de nuevos usuarios -->
+                <button type="button" id="btn-checkin1">Registrarse</button>
+            </form>
+        </div>
+    </section>
+    `;
 
   //Evento para ingresar con cuenta de correo de google.
   document.getElementById('buttonGoogle').addEventListener('click', () => {
