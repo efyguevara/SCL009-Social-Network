@@ -13,6 +13,7 @@ const authentication = (provider) => {
       let user = result.user;
       console.log(result);
       // ...
+      saveUserInData(user);
     }).catch((error) => {
       // Handle Errors here.
       let errorCode = error.code;
@@ -39,7 +40,6 @@ export const checkin = (emailCheckin, passwordCheckin) => {
 
       user.sendEmailVerification()
         .then(() => {
-
           //Envía al correo
           console.log("Enviando correo...");
         }).catch((error) => {
@@ -87,17 +87,37 @@ export const observer = () => {
       console.log("*****************");
       console.log(user.emailVerified);
       console.log("*****************");
-
+      
       let photoUrl = user.photoURL;
       let uid = user.uid;
       let providerData = user.providerData;
       // User is signed in.
+      saveUserInData(user);
     } else {
       // No user is signed in.
       console.log("No existe usuario activo");
     }
   });
 }
+
+//   Guardando a mis usuarios en firestore automáticamente
+const saveUserInData = (user) => {
+  let users = {
+      uid:user.uid,
+      name:user.displayName,
+      email:user.email,
+      photoURL:user.photoURL,
+  };
+  firebase.database().ref('Users/'+user.uid).set(users);
+};
+
+// Guardando los post de mis usuarios con su respectivo Uid.
+// const savePostInData = (post) => {
+//   let userPost = {
+//     uid:user.uid,
+//     text:user.post
+//   } 
+// }
 
 export const closed = () => {
   firebase.auth().signOut().then(() => {
