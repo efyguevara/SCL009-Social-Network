@@ -1,36 +1,36 @@
 // Pantalla que muestra el formulario de ingreso.
 import { checkin, login } from '../js/authFirebase.js';
-import { validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat} from '../js/validateCheckin.js';
+import { validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat } from '../js/validateCheckin.js';
 
 export const screenAuth = () => {
   document.getElementById('root').innerHTML =
     `
-<section class="root-container">
-    <div class="center">
-      <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
-    </div>
-    <div id="containerForm" class="container">
-        <form> 
-          <h2>Formulario de registro</h2>
-          <input type="text" id="nickname" placeholder="Nombre de usuario" name="nickname">
+    <section class="root-container">
+      <div class="center">
+          <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
+      </div>
+      <div id="containerForm" class="container">
+        <form>
+            <h2>Formulario de registro</h2>
+            <input type="text" id="nickname" placeholder="Nombre de usuario" name="nickname">
 
-          <input type="email" id="email" placeholder="correo@example.com" name="email">
-          <p id="error-email-checkin" class="err"></p>
+            <input type="email" id="email" placeholder="correo@example.com" name="email">
+            <p id="error-email-checkin" class="err"></p>
 
-          <input type="password" id="password" placeholder="&#128272; Contraseña" name="password">
-          <p id="error-password-checkin" class="err"></p>
-          
-          <input type="password" id="password_repeat" placeholder="&#128272; Repetir contraseña" name="password">
-          <p id="error-password-repeat" class="err"></p>
+            <input type="password" id="password" placeholder="&#128272; Contraseña" name="password">
+            <p id="error-password-checkin" class="err"></p>
 
-          <!-- Boton para registrar nuevo usuario -->
-          <button type="button" id="btn-checkin2">Registrarse</button>
-          
-          <!-- Boton para volver al login -->
-          <button type="button" id="return-login">Volver</button>
+            <input type="password" id="password_repeat" placeholder="&#128272; Repetir contraseña" name="password">
+            <p id="error-password-repeat" class="err"></p>
+
+            <!-- Boton para registrar nuevo usuario -->
+            <button type="button" id="btn-checkin2">Registrarse</button>
+
+            <!-- Boton para volver al login -->
+            <button type="button" id="return-login">Volver</button>
         </form>
-    </div>
-</section>
+      </div>
+    </section>
     `;
 
   // Evento para ingresar con cuenta de correo de google.  
@@ -41,7 +41,7 @@ export const screenAuth = () => {
 
     let emailCheckin = document.getElementById("email").value;
     let passwordCheckin = document.getElementById("password");
-    let passwordRepeat= document.getElementById("password_repeat"); 
+    let passwordRepeat = document.getElementById("password_repeat");
 
     let resultValidateEmailCheckin = validateEmailCheckin(emailCheckin);
     let resultValidatePasswordCheckin = validatePasswordCheckin(passwordCheckin.value);

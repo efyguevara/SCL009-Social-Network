@@ -1,4 +1,6 @@
 import { notifyError } from '../js/notifications.js';
+
+
 export const authGoogle = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
   authentication(provider);
@@ -27,7 +29,6 @@ const authentication = (provider) => {
       // The firebase.auth.AuthCredential type that was used.
       let credential = error.credential;
       console.log(credential);
-      // ...
     });
 }
 
@@ -55,7 +56,7 @@ export const checkin = (emailCheckin, passwordCheckin) => {
       let errorCode = error.code;
       let errorMessage = error.message;
       console.log(errorMessage);
-      notifyError(errorCode, 'error-email-checkin');    
+      notifyError(errorCode, 'error-email-checkin');
     });
 }
 
@@ -74,9 +75,8 @@ export const login = (emailLogin, passwordLogin) => {
       console.log(errorMessage);
       notifyError(errorCode, 'error-mail');
       notifyError(errorCode, 'error-password');
-
     });
-} 
+}
 
 //Agregando función que observa el registro del usuario
 export const observer = () => {
@@ -91,7 +91,7 @@ export const observer = () => {
       console.log("*****************");
       console.log(user.emailVerified);
       console.log("*****************");
-      
+
       let photoUrl = user.photoURL;
       let uid = user.uid;
       let providerData = user.providerData;
@@ -107,12 +107,12 @@ export const observer = () => {
 //   Guardando a mis usuarios en firestore automáticamente
 const saveUserInData = (user) => {
   let users = {
-      uid:user.uid,
-      name:user.displayName,
-      email:user.email,
-      photoURL:user.photoURL,
+    uid: user.uid,
+    name: user.displayName,
+    email: user.email,
+    photoURL: user.photoURL,
   };
-  firebase.database().ref('Users/'+user.uid).set(users);
+  firebase.database().ref('Users/' + user.uid).set(users);
 };
 
 // Guardando los post de mis usuarios con su respectivo Uid.
