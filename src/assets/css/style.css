@@ -39,15 +39,12 @@ form{
 }
 
 
-<<<<<<< Updated upstream
 /* Estilos de botones e inputs */
-=======
 #error-mail, #error-password{
     font-size: 15px;
     color: red;
 }
 
->>>>>>> Stashed changes
 input, button{
     border-radius: .5rem;
     display: block;

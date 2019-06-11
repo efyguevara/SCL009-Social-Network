@@ -1,13 +1,7 @@
-<<<<<<< Updated upstream
-import { screenLogin } from './assets/views/screenLogin.js';
-import { screenAuth } from './assets/views/screenAuth.js';
-import { screenHome } from './assets/views/screenHome.js';
-=======
 //
 import { screenLogin } from '../assets/views/screenLogin.js';
 import { screenAuth } from '../assets/views/screenAuth.js';
 import { screenHome } from '../assets/views/screenHome.js';
->>>>>>> Stashed changes
 
 const changeRoute = (hash) => {
     if (hash === '#/login' || hash === '#/auth' || hash === '#/home' || hash === '#/' || hash === '')

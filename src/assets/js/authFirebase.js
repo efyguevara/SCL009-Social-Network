@@ -13,6 +13,7 @@ const authentication = (provider) => {
       let user = result.user;
       console.log(result);
       // ...
+      saveUserInData(user);
     }).catch((error) => {
       // Handle Errors here.
       let errorCode = error.code;
@@ -55,6 +56,7 @@ export const checkin = (emailCheckin, passwordCheckin) => {
       console.log(errorCode);
       console.log(errorMessage);
     });
+    saveUserInData(user);
 }
 
 export const login = (emailLogin, passwordLogin) => {
@@ -98,6 +100,18 @@ export const observer = () => {
     }
   });
 }
+
+//   Guardando a mis usuarios en firestore automáticamente
+const saveUserInData = (user) => {
+  let usuario = {
+      uid:user.uid,
+      name:user.displayName,
+      email:user.email,
+      photoURL:user.photoURL,
+      post:{}
+  };
+  firebase.database().ref('nezuproject/'+user.uid).set(usuario);
+};
 
 export const closed = () => {
   firebase.auth().signOut().then(() => {
