@@ -47,7 +47,6 @@ export const screenAuth = () => {
     let resultValidatePasswordCheckin = validatePasswordCheckin(passwordCheckin.value);
     let resultValidatePasswordRepeat = validatePasswordRepeat(passwordRepeat.value, passwordCheckin.value);
 
-
     if (resultValidateEmailCheckin === true && resultValidatePasswordCheckin === true && resultValidatePasswordRepeat === true) {
       checkin(emailCheckin, passwordCheckin.value);
     }

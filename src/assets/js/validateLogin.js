@@ -11,10 +11,3 @@ export const validatePassword = (passwordLogin) => {
     }
     return true;
 }
-
-export const validateInvalidEmail = (emailLogin, user) => {
-    if (emailLogin != user) {
-        return false
-    }
-    return true
-}

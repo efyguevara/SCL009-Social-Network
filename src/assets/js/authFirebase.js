@@ -1,3 +1,4 @@
+import { notifyError } from '../js/notifications.js';
 export const authGoogle = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
   authentication(provider);
@@ -49,11 +50,12 @@ export const checkin = (emailCheckin, passwordCheckin) => {
       window.location.hash = '#/login';
     })
     .catch((error) => {
+
       //Si ocurre un error
       let errorCode = error.code;
       let errorMessage = error.message;
-      console.log(errorCode);
       console.log(errorMessage);
+      notifyError(errorCode, 'error-email-checkin');    
     });
 }
 
@@ -70,7 +72,9 @@ export const login = (emailLogin, passwordLogin) => {
       var errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-      // ...
+      notifyError(errorCode, 'error-mail');
+      notifyError(errorCode, 'error-password');
+
     });
 } 
 
