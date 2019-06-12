@@ -100,7 +100,7 @@ export const observer = () => {
       console.log(user)
       verifiedEmail(user);
       console.log("Existe usuario activo");
-
+      
       let displayName = user.displayName;
       let email = user.email;
 
@@ -189,6 +189,8 @@ export const savePostInData = (post) => {
 //Cesar sesión
 export const closed = () => {
   firebase.auth().signOut().then(() => {
+    
+    window.location.hash = '#/login';
     console.log("Saliendo...");
     // Sign-out successful.
   }).catch((error) => {

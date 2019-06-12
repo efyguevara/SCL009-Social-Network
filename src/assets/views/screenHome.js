@@ -13,10 +13,9 @@ export const screenHome = () => {
                     <h1 class="logo">Logo <span>Empresa</span></h1>
                     <nav id="site-nav" class="site-nav">
                         <ul>
-                            <li><a href=""><i class="fa fa-home site-nav--icon"></i>Mi perfil</a></li>
-                            <li><a href=""><i class="fa fa-home site-nav--icon"></i>Muro</a></li>
-                            <li><a href=""><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a>
-                            </li>
+                            <li><a href=""><i class="fa fa-home site-nav--icon" id="mi_perfil"></i>Mi perfil</a></li>
+                            <li><a href=""><i class="fa fa-home site-nav--icon" id="muro"></i>Muro</a></li>
+                            <li><a href=""><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a></li>
                         </ul>
                     </nav>
                     <div id="menu-toggle" class="menu-toggle">
@@ -50,7 +49,7 @@ export const screenHome = () => {
 
     // Evento para ingresar con cuenta de correo de google.
     document.getElementById('closed').addEventListener('click', () => {
+        console.log("hola");
         closed();
-        window.location.hash = '#/login'
     });
 };
