@@ -1,8 +1,11 @@
 //Pantalla que muestra el formulario de ingreso.
-import { login, authGoogle } from '../js/authFirebase.js';
+import { login, authGoogle, changePassword } from '../js/authFirebase.js';
 import { validateEmail, validatePassword } from '../js/validateLogin.js';
+import { closed } from '../js/authFirebase.js';
+
 
 export const screenLogin = () => {
+  closed();
   document.getElementById('root').innerHTML =
     `
 
@@ -18,7 +21,7 @@ export const screenLogin = () => {
                 <p id="error-password" class="err"></p>
 
                 <!-- Enlace para cambiar la contraseña -->
-                <a href="#/resetPassword" id="rememberPassword" class="textBlack">¿Olvidaste la contraseña?</a>
+                <a href="#" id="changePassword" class="textBlack">¿Olvidaste la contraseña?</a>
 
                 <!-- boton para iniciar sesion -->
                 <button type="button" id="btn-login" value="Iniciar sesión">Iniciar sesión</button>
@@ -64,4 +67,8 @@ export const screenLogin = () => {
       document.getElementById("error-password").innerHTML = `${errPass}`;
     }
   });
-};
+
+//   document.getElementById('changePassword').addEventListener("click", () => {
+//     changePassword(email);
+//   })
+// };
