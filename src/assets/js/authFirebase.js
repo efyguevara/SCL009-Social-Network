@@ -85,7 +85,8 @@ export const login = (emailLogin, passwordLogin) => {
       console.log(errorMessage);
       if (error.code ===  "auth/user-not-found"){
         notifyError(errorCode, 'error-mail');
-      }else{
+      }
+      if(error.code ===  "auth/wrong-password"){
         notifyError(errorCode, 'error-password');
       }  
     });
