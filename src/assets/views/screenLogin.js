@@ -1,10 +1,14 @@
 //Pantalla que muestra el formulario de ingreso.
 import { login, authGoogle } from '../js/authFirebase.js';
 import { validateEmail, validatePassword } from '../js/validateLogin.js';
+import { closed } from '../js/authFirebase.js';
+
 
 export const screenLogin = () => {
+  closed();
   document.getElementById('root').innerHTML =
     `
+
     <section class="root-container">
         <div class="center">
             <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
