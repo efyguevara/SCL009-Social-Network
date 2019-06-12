@@ -69,21 +69,12 @@ export const login = (emailLogin, passwordLogin) => {
   console.log(passwordLogin);
 
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
-<<<<<<< Updated upstream
     .then((log) => {
       if (log.user.emailVerified) {
         window.location.hash = '#/home';
       } else {
         window.location.hash = '#/login';
       }
-=======
-    .then(() => {
-      // saveUserInData(user);
-      window.location.hash = '#/home';
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     })
     .catch((error) => {
       // Handle Errors here.
@@ -173,9 +164,6 @@ const saveUserInData = (user) => {
   firebase.database().ref('Users/' + user.uid).set(users);
 };
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
 // Guardando los post de mis usuarios con su respectivo Uid.
 export const savePostInData = (post) => {
   let userPost = {
@@ -186,9 +174,7 @@ export const savePostInData = (post) => {
   };
   firebase.database().ref('userPost/' + post.text).on(userPost);
 };
-=======
-=======
->>>>>>> Stashed changes
+
 // export const savePostInData = (post) => {
 //   let userPost = {
 //     // uid:user.uid,
@@ -198,10 +184,7 @@ export const savePostInData = (post) => {
 //   };
 //   firebase.database().ref('userPost/'+post.text).on(userPost);
 // };
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 
 //Cesar sesión
 export const closed = () => {

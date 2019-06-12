@@ -13,18 +13,9 @@ export const screenHome = () => {
                     <h1 class="logo">Logo <span>Empresa</span></h1>
                     <nav id="site-nav" class="site-nav">
                         <ul>
-<<<<<<< Updated upstream
-                            <li><a href="#"><i class="fa fa-home site-nav--icon"></i>Mi perfil</a></li>
-                            <li><a href="#"><i class="fa fa-home site-nav--icon"></i>Muro</a></li>
-                            <li><a href="#/login"><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a>
-=======
                             <li><a href=""><i class="fa fa-home site-nav--icon"></i>Mi perfil</a></li>
                             <li><a href=""><i class="fa fa-home site-nav--icon"></i>Muro</a></li>
                             <li><a href=""><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                             </li>
                         </ul>
                     </nav>
