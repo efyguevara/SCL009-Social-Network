@@ -1,14 +1,14 @@
 //Pantalla que muestra el formulario de ingreso.
-import { login, authGoogle } from '../js/authFirebase.js';
+import { login, authGoogle, closed} from '../js/authFirebase.js';
 import { validateEmail, validatePassword } from '../js/validateLogin.js';
-import { closed } from '../js/authFirebase.js';
+import { screenResetPassword } from '../views/screenResetPassword.js';
 
 
 export const screenLogin = () => {
-  closed();
+  // closed();
+  
   document.getElementById('root').innerHTML =
     `
-
     <section class="root-container">
         <div class="center">
             <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
@@ -21,7 +21,7 @@ export const screenLogin = () => {
                 <p id="error-password" class="err"></p>
 
                 <!-- Enlace para cambiar la contraseña -->
-                <a href="#" id="changePassword" class="textBlack">¿Olvidaste la contraseña?</a>
+                <a href="#/resetPassword" id="changePassword" class="textBlack">¿Olvidaste la contraseña?</a>
 
                 <!-- boton para iniciar sesion -->
                 <button type="button" id="btn-login" value="Iniciar sesión">Iniciar sesión</button>
@@ -35,6 +35,11 @@ export const screenLogin = () => {
         </div>
     </section>
     `;
+
+  //Restablecer la contraseña
+  document.getElementById('changePassword').addEventListener("click", () => {
+    screenResetPassword();
+  })
 
   //Evento para ingresar con cuenta de correo de google.
   document.getElementById('buttonGoogle').addEventListener('click', () => {
@@ -60,15 +65,11 @@ export const screenLogin = () => {
     if (resultValidateEmail === true && resultValidatePassword === true) {
       login(emailLogin, passwordLogin);
     }
-    // if (resultValidateEmail === false) {
-    //   document.getElementById("error-mail").innerHTML = `${errMail}`;
-    // }
-    // if (resultValidatePassword === false) {
-    //   document.getElementById("error-password").innerHTML = `${errPass}`;
-    // }
+    if (resultValidateEmail === false) {
+      document.getElementById("error-mail").innerHTML = `${errMail}`;
+    }
+    if (resultValidatePassword === false) {
+      document.getElementById("error-password").innerHTML = `${errPass}`;
+    }
   });
-
-//   document.getElementById('changePassword').addEventListener("click", () => {
-//     changePassword(email);
-//   })
  };
