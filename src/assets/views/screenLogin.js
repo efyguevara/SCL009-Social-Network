@@ -1,5 +1,5 @@
 //Pantalla que muestra el formulario de ingreso.
-import { login, authGoogle, changePassword } from '../js/authFirebase.js';
+import { login, authGoogle } from '../js/authFirebase.js';
 import { validateEmail, validatePassword } from '../js/validateLogin.js';
 import { closed } from '../js/authFirebase.js';
 
@@ -60,15 +60,15 @@ export const screenLogin = () => {
     if (resultValidateEmail === true && resultValidatePassword === true) {
       login(emailLogin, passwordLogin);
     }
-    if (resultValidateEmail === false) {
-      document.getElementById("error-mail").innerHTML = `${errMail}`;
-    }
-    if (resultValidatePassword === false) {
-      document.getElementById("error-password").innerHTML = `${errPass}`;
-    }
+    // if (resultValidateEmail === false) {
+    //   document.getElementById("error-mail").innerHTML = `${errMail}`;
+    // }
+    // if (resultValidatePassword === false) {
+    //   document.getElementById("error-password").innerHTML = `${errPass}`;
+    // }
   });
 
 //   document.getElementById('changePassword').addEventListener("click", () => {
 //     changePassword(email);
 //   })
-// };
+ };
