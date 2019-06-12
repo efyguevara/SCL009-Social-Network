@@ -1,5 +1,5 @@
 // Pantalla que muestra el home con los posts.
-import { closed, savePostInData } from '../js/authFirebase.js';
+import { closed } from '../js/authFirebase.js';
 
 
 export const screenHome = () => {
@@ -13,13 +13,19 @@ export const screenHome = () => {
                     <h1 class="logo">Logo <span>Empresa</span></h1>
                     <nav id="site-nav" class="site-nav">
                         <ul>
+<<<<<<< Updated upstream
                             <li><a href="#"><i class="fa fa-home site-nav--icon"></i>Mi perfil</a></li>
                             <li><a href="#"><i class="fa fa-home site-nav--icon"></i>Muro</a></li>
                             <li><a href="#/login"><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a>
+=======
+                            <li><a href=""><i class="fa fa-home site-nav--icon"></i>Mi perfil</a></li>
+                            <li><a href=""><i class="fa fa-home site-nav--icon"></i>Muro</a></li>
+                            <li><a href=""><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a>
+>>>>>>> Stashed changes
                             </li>
                         </ul>
                     </nav>
-                    <div id="menu-toggle" class="menu-toggle" onclick="cambiarClase()">
+                    <div id="menu-toggle" class="menu-toggle">
                         <div class="hamburger"></div>
                     </div>
                 </div>
@@ -44,8 +50,8 @@ export const screenHome = () => {
 
     document.getElementById('send').addEventListener('click', () => {
         let post = document.getElementById('text_post').value;
-        document.getElementById('')
-        savePostInData();
+        // document.getElementById('')
+        // savePostInData();
     })
 
     // Evento para ingresar con cuenta de correo de google.

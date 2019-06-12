@@ -42,7 +42,6 @@ export const checkin = (emailCheckin, passwordCheckin) => {
   firebase.auth().createUserWithEmailAndPassword(emailCheckin, passwordCheckin)
     .then(() => {
       let user = firebase.auth().currentUser;
-
       user.sendEmailVerification()
         .then(() => {
           //Envía al correo
@@ -70,12 +69,18 @@ export const login = (emailLogin, passwordLogin) => {
   console.log(passwordLogin);
 
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
+<<<<<<< Updated upstream
     .then((log) => {
       if (log.user.emailVerified) {
         window.location.hash = '#/home';
       } else {
         window.location.hash = '#/login';
       }
+=======
+    .then(() => {
+      // saveUserInData(user);
+      window.location.hash = '#/home';
+>>>>>>> Stashed changes
     })
     .catch((error) => {
       // Handle Errors here.
@@ -165,6 +170,7 @@ const saveUserInData = (user) => {
   firebase.database().ref('Users/' + user.uid).set(users);
 };
 
+<<<<<<< Updated upstream
 
 // Guardando los post de mis usuarios con su respectivo Uid.
 export const savePostInData = (post) => {
@@ -176,6 +182,17 @@ export const savePostInData = (post) => {
   };
   firebase.database().ref('userPost/' + post.text).on(userPost);
 };
+=======
+// export const savePostInData = (post) => {
+//   let userPost = {
+//     // uid:user.uid,
+//     // name:user.displayName,
+//     // date:post.date,
+//     text:post.text
+//   };
+//   firebase.database().ref('userPost/'+post.text).on(userPost);
+// };
+>>>>>>> Stashed changes
 
 //Cesar sesión
 export const closed = () => {
