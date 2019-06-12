@@ -1,0 +1,1 @@
+document.getElementById("root").innerHTML = `<p>Aki cambiaras tu contraseña</p>`
