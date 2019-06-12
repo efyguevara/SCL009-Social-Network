@@ -80,6 +80,9 @@ export const login = (emailLogin, passwordLogin) => {
     .then(() => {
       // saveUserInData(user);
       window.location.hash = '#/home';
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     })
     .catch((error) => {
@@ -171,6 +174,7 @@ const saveUserInData = (user) => {
 };
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 // Guardando los post de mis usuarios con su respectivo Uid.
 export const savePostInData = (post) => {
@@ -183,6 +187,8 @@ export const savePostInData = (post) => {
   firebase.database().ref('userPost/' + post.text).on(userPost);
 };
 =======
+=======
+>>>>>>> Stashed changes
 // export const savePostInData = (post) => {
 //   let userPost = {
 //     // uid:user.uid,
@@ -192,6 +198,9 @@ export const savePostInData = (post) => {
 //   };
 //   firebase.database().ref('userPost/'+post.text).on(userPost);
 // };
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 //Cesar sesión
