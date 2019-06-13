@@ -1,1 +1,31 @@
-document.getElementById("root").innerHTML = `<p>Aki cambiaras tu contraseña</p>`
+import { changePassword } from '../js/authFirebase.js'; 
+
+export const screenResetPassword = () => {
+
+document.getElementById('root').innerHTML =
+    `
+    <section class="root-container">
+        <div class="center">
+            <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
+        </div>
+        <div id="containerForm" class="container">
+            <form>
+            <h2>Reestablecer contraseña</h2>
+            <h4>Por favor ingrese su email para restaurar la contraseña</h4>
+                <input type="email" id="emailResetPassword" placeholder="&#9993; correo@example.com" name="email">
+                <p id="error-mail" class="err"></p>
+                
+                <!-- boton para solicitar el reestablecimiento de la contraseña -->
+                <button type="button" id="btn_reset_pass" value="Cambiar Contraseña">Cambiar Contraseña</button>
+                
+                <!-- Boton para volver al login -->
+                <button type="button" id="return-login">Volver</button>
+            </form>
+        </div>
+    </section>
+    `;
+document.getElementById("btn_reset_pass").addEventListener("click", () => {
+    changePassword();
+    window.location.hash = '#/login';
+})
+}

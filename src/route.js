@@ -2,9 +2,11 @@
 import { screenLogin } from '../assets/views/screenLogin.js';
 import { screenAuth } from '../assets/views/screenAuth.js';
 import { screenHome } from '../assets/views/screenHome.js';
+import { screenResetPassword } from '../assets/views/screenResetPassword.js';
+import { observer } from './assets/js/authFirebase.js';
 
 const changeRoute = (hash) => {
-    if (hash === '#/login' || hash === '#/auth' || hash === '#/home' || hash === '#/' || hash === '')
+    if (hash === '#/login' || hash === '#/auth' || hash === '#/home' || hash === '#/resetPassword' || hash === '#/' || hash === '')
         return showScreen(hash);
 }
 export const showScreen = (hash) => {
@@ -21,6 +23,9 @@ export const showScreen = (hash) => {
         case 'home':
             screenHome();
             break
+        case 'resetPassword':
+            screenResetPassword();
+            break
         case '':
             screenLogin();
             break
@@ -34,7 +39,7 @@ export const showScreen = (hash) => {
 
 export const initRouter = () => {
     window.addEventListener('load', changeRoute(window.location.hash));
-    if ('onhashchange' in window) {
+    if ('onhashchange' in window) {      
         window.onhashchange = () => {
             changeRoute(window.location.hash);
           }

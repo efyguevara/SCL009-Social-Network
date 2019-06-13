@@ -1,6 +1,7 @@
 import { notifyError } from '../js/notifications.js';
 import { screenHome } from '../views/screenHome.js';
-import { screenLogin } from '../views/screenLogin.js';
+// import { screenLogin } from '../views/screenLogin.js';
+// import { screenResetPassword } from '../views/screenResetPassword.js';
 
 //Ingreso con google
 export const authGoogle = () => {
@@ -95,7 +96,7 @@ export const login = (emailLogin, passwordLogin) => {
 //observa...
 export const observer = () => {
   firebase.auth().onAuthStateChanged((user) => {
-
+    
     if (user) {
       console.log(user)
       verifiedEmail(user);
@@ -113,11 +114,13 @@ export const observer = () => {
       let uid = user.uid;
       let providerData = user.providerData;
       // User is signed in.
-      login();
+      
       saveUserInData(user);
     }
-    else if (!user) {
+    else {
+      //window.location.hash = '#/login'
       console.log("No existe usuario activo");
+      window.location.hash = '#/login'
     }
   });
 }
@@ -137,21 +140,21 @@ export const verifiedEmail = (user) => {
 }
 
 
-// export const changePassword = (email) => {
-//   let auth = firebase.auth();
-//   let emailAddress = email;
+export const changePassword = (email) => {
+  let auth = firebase.auth();
+  let emailAddress = email;
 
-//   auth.sendPasswordResetEmail(emailAddress)
-//     .then(() => {
-//       console.log("Enviando correo para cambiar contraseña")
+  auth.sendPasswordResetEmail(emailAddress)
+    .then(() => {
+      console.log("Enviando correo para cambiar contraseña")
 
-//     }).catch(error => {
-//       console.log("ocurrio un error al eenviar el email")
-//       let errorCode = error.code;
-//       //      notifyError(errorCode, );
+    }).catch(error => {
+      console.log("ocurrio un error al eenviar el email")
+      let errorCode = error.code;
+      //      notifyError(errorCode, );
 
-//     });
-// }
+    });
+}
 
 //   Guardando a mis usuarios en firestore automáticamente
 const saveUserInData = (user) => {

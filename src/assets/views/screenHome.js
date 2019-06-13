@@ -1,9 +1,8 @@
 // Pantalla que muestra el home con los posts.
-import { closed } from '../js/authFirebase.js';
-
+import { closed, savePostInData, observer } from '../js/authFirebase.js';
 
 export const screenHome = () => {
-
+    
     document.getElementById('root').innerHTML =
         `
     <header>
@@ -13,10 +12,9 @@ export const screenHome = () => {
                     <h1 class="logo">Logo <span>Empresa</span></h1>
                     <nav id="site-nav" class="site-nav">
                         <ul>
-                            <li><a href=""><i class="fa fa-home site-nav--icon"></i>Mi perfil</a></li>
-                            <li><a href=""><i class="fa fa-home site-nav--icon"></i>Muro</a></li>
-                            <li><a href=""><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a>
-                            </li>
+                            <li><a href="" id="mi_perfil">Mi perfil</a></li>
+                            <li><a href=""id="muro">Muro</a></li>
+                            <li><a href="" id="closed" >Cerrar sesión</a></li>
                         </ul>
                     </nav>
                     <div id="menu-toggle" class="menu-toggle">
@@ -25,7 +23,7 @@ export const screenHome = () => {
                 </div>
             </div>
         </div>
-</header> 
+    </header> 
 
     <!-- posts -->
 <container>
@@ -52,5 +50,6 @@ export const screenHome = () => {
     document.getElementById('closed').addEventListener('click', () => {
         closed();
         window.location.hash = '#/login'
+        observer();
     });
 };
