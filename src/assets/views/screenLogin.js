@@ -1,12 +1,12 @@
 //Pantalla que muestra el formulario de ingreso.
-import { login, authGoogle, closed} from '../js/authFirebase.js';
+import { login, authGoogle, closed } from '../js/authFirebase.js';
 import { validateEmail, validatePassword } from '../js/validateLogin.js';
 import { screenResetPassword } from '../views/screenResetPassword.js';
 
 
 export const screenLogin = () => {
   // closed();
-  
+
   document.getElementById('root').innerHTML =
     `
     <section class="root-container">
@@ -53,6 +53,7 @@ export const screenLogin = () => {
 
   //Evento para ingresar con usuario y contraseña (valida que el maiol y la contraseña sean validos y manda mjs de error si no lo son)
   document.getElementById('btn-login').addEventListener('click', () => {
+    
     let errMail = "Por favor ingresa un email válido";
     let errPass = "Por favor ingresa una contraseña válida";
 
@@ -70,6 +71,6 @@ export const screenLogin = () => {
     }
     if (resultValidatePassword === false) {
       document.getElementById("error-password").innerHTML = `${errPass}`;
-    }
+    }  
   });
- };
+};

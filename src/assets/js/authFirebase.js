@@ -1,7 +1,6 @@
 import { notifyError } from '../js/notifications.js';
 import { screenHome } from '../views/screenHome.js';
-// import { screenLogin } from '../views/screenLogin.js';
-// import { screenResetPassword } from '../views/screenResetPassword.js';
+
 
 //Ingreso con google
 export const authGoogle = () => {
@@ -19,7 +18,6 @@ const authentication = (provider) => {
       let user = result.user;
       console.log(result);
       saveUserInData(user);
-
     }).catch((error) => {
       // Handle Errors here.
       let errorCode = error.code;
@@ -121,7 +119,7 @@ export const observer = () => {
     else {
       //window.location.hash = '#/login'
       console.log("No existe usuario activo");
-      window.location.hash = '#/login'
+      window.location.hash = '#/login';
     }
   });
 }
@@ -141,18 +139,20 @@ export const verifiedEmail = (user) => {
 }
 
 
-export const changePassword = (email) => {
+export const changePassword = (emailResetPass) => {
+  console.log("entra en el changePassword")
   let auth = firebase.auth();
-  let emailAddress = email;
-
+  let emailAddress = emailResetPass;
+console.log(emailAddress)
   auth.sendPasswordResetEmail(emailAddress)
+
     .then(() => {
       console.log("Enviando correo para cambiar contraseña")
 
     }).catch(error => {
       console.log("ocurrio un error al eenviar el email")
       let errorCode = error.code;
-      //      notifyError(errorCode, );
+      notifyError(errorCode, 'error-mail');
 
     });
 }
