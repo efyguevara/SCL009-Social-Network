@@ -18,6 +18,7 @@ const authentication = (provider) => {
       let user = result.user;
       console.log(result);
       saveUserInData(user);
+
     }).catch((error) => {
       // Handle Errors here.
       let errorCode = error.code;
@@ -41,6 +42,7 @@ export const checkin = (emailCheckin, passwordCheckin) => {
   firebase.auth().createUserWithEmailAndPassword(emailCheckin, passwordCheckin)
     .then(() => {
       let user = firebase.auth().currentUser;
+
       user.sendEmailVerification()
         .then(() => {
           //Envía al correo
@@ -167,6 +169,7 @@ const saveUserInData = (user) => {
   firebase.database().ref('Users/' + user.uid).set(users);
 };
 
+
 // Guardando los post de mis usuarios con su respectivo Uid.
 export const savePostInData = (post) => {
   let userPost = {
@@ -177,17 +180,6 @@ export const savePostInData = (post) => {
   };
   firebase.database().ref('userPost/' + post.text).on(userPost);
 };
-
-// export const savePostInData = (post) => {
-//   let userPost = {
-//     // uid:user.uid,
-//     // name:user.displayName,
-//     // date:post.date,
-//     text:post.text
-//   };
-//   firebase.database().ref('userPost/'+post.text).on(userPost);
-// };
-
 
 //Cesar sesión
 export const closed = () => {
