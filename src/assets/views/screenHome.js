@@ -17,7 +17,7 @@ export const screenHome = () => {
                             <li><a href="" id="closed" >Cerrar sesión</a></li>
                         </ul>
                     </nav>
-                    <div id="menu-toggle" class="menu-toggle" onclick="cambiarClase()">
+                    <div id="menu-toggle" class="menu-toggle">
                         <div class="hamburger"></div>
                     </div>
                 </div>
@@ -42,8 +42,8 @@ export const screenHome = () => {
 
     document.getElementById('send').addEventListener('click', () => {
         let post = document.getElementById('text_post').value;
-        document.getElementById('')
-        savePostInData();
+        // document.getElementById('')
+        // savePostInData();
     })
 
     // Evento para ingresar con cuenta de correo de google.
