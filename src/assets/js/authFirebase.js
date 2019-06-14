@@ -1,7 +1,6 @@
 import { notifyError } from '../js/notifications.js';
 import { screenHome } from '../views/screenHome.js';
 
-
 //Ingreso con google
 export const authGoogle = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
@@ -63,15 +62,15 @@ export const checkin = (emailCheckin, passwordCheckin) => {
     });
 }
 
-
 //Inicio de sesión
 export const login = (emailLogin, passwordLogin) => {
   console.log(emailLogin);
   console.log(passwordLogin);
-
   firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
     .then((log) => {
-      if (log.user.emailVerified) {
+      console.log('aquí');
+      console.log(log);
+      if (log.user.emailVerified === true) {
         window.location.hash = '#/home';
       } else {
         window.location.hash = '#/login';
@@ -83,12 +82,12 @@ export const login = (emailLogin, passwordLogin) => {
       var errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-      if (error.code ===  "auth/user-not-found"){
+      if (error.code === "auth/user-not-found") {
         notifyError(errorCode, 'error-mail');
       }
-      if(error.code ===  "auth/wrong-password"){
+      if (error.code === "auth/wrong-password") {
         notifyError(errorCode, 'error-password');
-      }  
+      }
     });
 }
 
@@ -96,7 +95,6 @@ export const login = (emailLogin, passwordLogin) => {
 //observa...
 export const observer = () => {
   firebase.auth().onAuthStateChanged((user) => {
-    
     if (user) {
       console.log(user)
       verifiedEmail(user);
@@ -114,11 +112,9 @@ export const observer = () => {
       let uid = user.uid;
       let providerData = user.providerData;
       // User is signed in.
-      
       saveUserInData(user);
     }
-    else {
-      //window.location.hash = '#/login'
+    else{
       console.log("No existe usuario activo");
       window.location.hash = '#/login';
     }
@@ -136,7 +132,7 @@ export const verifiedEmail = (user) => {
   if (!user2.emailVerified) {
     console.log("Por favor verifica tu cuenta antes de ingresar");
     notifyError("auth/invalid-email-verified", 'error-mail');
-  }
+  }deleErrMail();
 }
 
 
@@ -176,6 +172,7 @@ export const savePostInData = (post) => {
     // uid:user.uid,
     // name:user.displayName,
     // date:post.date,
+    // text:post.text
     text: post.text
   };
   firebase.database().ref('userPost/' + post.text).on(userPost);

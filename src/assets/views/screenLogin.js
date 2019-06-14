@@ -6,7 +6,6 @@ import { screenResetPassword } from '../views/screenResetPassword.js';
 
 export const screenLogin = () => {
   // closed();
-
   document.getElementById('root').innerHTML =
     `
     <section class="root-container">

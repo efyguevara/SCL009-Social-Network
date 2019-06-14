@@ -1,8 +1,8 @@
 // Pantalla que muestra el home con los posts.
-import { closed, savePostInData, observer } from '../js/authFirebase.js';
+import { closed } from '../js/authFirebase.js';
+
 
 export const screenHome = () => {
-    
     document.getElementById('root').innerHTML =
         `
     <header>
@@ -12,9 +12,9 @@ export const screenHome = () => {
                     <h1 class="logo">Logo <span>Empresa</span></h1>
                     <nav id="site-nav" class="site-nav">
                         <ul>
-                            <li><a href="" id="mi_perfil">Mi perfil</a></li>
-                            <li><a href=""id="muro">Muro</a></li>
-                            <li><a href="" id="closed" >Cerrar sesión</a></li>
+                        <li><a href="" id="mi_perfil">Mi perfil</a></li>
+                        <li><a href=""id="muro">Muro</a></li>
+                        <li><a href="" id="closed" >Cerrar sesión</a></li>
                         </ul>
                     </nav>
                     <div id="menu-toggle" class="menu-toggle">
@@ -42,8 +42,9 @@ export const screenHome = () => {
 
     document.getElementById('send').addEventListener('click', () => {
         let post = document.getElementById('text_post').value;
-        // document.getElementById('')
-        // savePostInData();
+        console.log(post);
+        document.getElementById('')
+        savePostInData();
     })
 
     // Evento para ingresar con cuenta de correo de google.
