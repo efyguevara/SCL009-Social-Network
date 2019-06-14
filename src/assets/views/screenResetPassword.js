@@ -15,7 +15,7 @@ document.getElementById('root').innerHTML =
             <h2>Reestablecer contraseña</h2>
             <h4>Por favor ingrese su email para restaurar la contraseña</h4>
                 <input type="email" id="emailResetPassword" placeholder="&#9993; correo@example.com" name="email">
-                <p id="error-mail" class="err"></p>
+                <p id="error-mail-reset-pass" class="err"></p>
                 
                 <!-- boton para solicitar el reestablecimiento de la contraseña -->
                 <button type="button" class="button" id="btn_reset_pass" value="Cambiar Contraseña">Cambiar Contraseña</button>
@@ -29,8 +29,8 @@ document.getElementById('root').innerHTML =
 document.getElementById("btn_reset_pass").addEventListener("click", () => {
     let emailResetPass = document.getElementById("emailResetPassword").value;
     changePassword(emailResetPass);
-    screenLogin();
-    // window.location.hash = '#/login';
+    // screenLogin();
+    window.location.hash = '#/login';
 })
 
 document.getElementById("return-login").addEventListener("click", () => {

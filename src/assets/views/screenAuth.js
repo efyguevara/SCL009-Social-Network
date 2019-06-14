@@ -72,8 +72,28 @@ export const screenAuth = () => {
     }
   });
 
+  document.getElementById('email').addEventListener('focus', () => {
+    let delErrMailCheckin = document.getElementById('error-email-checkin').value;
+    if (delErrMailCheckin != "") {
+      document.getElementById('error-email-checkin').innerHTML = "";
+    }
+  });
+
+  document.getElementById("password").addEventListener('focus', () => {
+    let delErrPassCheckin = document.getElementById('error-password-checkin').value;
+    if (delErrPassCheckin != "") {
+      document.getElementById("error-password-checkin").innerHTML = "";
+    }
+  })
+  document.getElementById("password").addEventListener('focus', () => {
+    let delErrPassCheckinRepeat = document.getElementById('error-password-repeat').value;
+    if (delErrPassCheckinRepeat != "") {
+      document.getElementById("error-password-repeat").innerHTML = "";
+    }
+  })
+
   //Evento para volver al login desde la pantalla de registro
-  document.getElementById("return-login").addEventListener("click", () => {
+  document.getElementById("back").addEventListener("click", () => {
     //modificar como hace el cambio de hash
     window.location.hash = '#/login';
   })

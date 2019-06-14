@@ -44,6 +44,11 @@ form.formfirt{
     color: red;
 }
 
+
+#back{
+    background: rgb(209, 203, 203);
+}
+
 input, .button{
     border-radius: .5rem;
     display: block;
@@ -71,9 +76,6 @@ input, .button{
     transform: scale(0.95);
 }
 
-#btn-checkin1{
-    background: rgb(209, 203, 203);
-}
 
 
 /* Reutilizables */
