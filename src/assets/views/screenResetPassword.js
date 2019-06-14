@@ -4,8 +4,8 @@ import { screenLogin } from '../views/screenLogin.js'
 
 export const screenResetPassword = () => {
 
-document.getElementById('root').innerHTML =
-    `
+    document.getElementById('root').innerHTML =
+        `
     <section class="root-container">
         <div class="center">
             <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
@@ -26,17 +26,17 @@ document.getElementById('root').innerHTML =
         </div>
     </section>
     `;
-document.getElementById("btn_reset_pass").addEventListener("click", () => {
-    let emailResetPass = document.getElementById("emailResetPassword").value;
-    changePassword(emailResetPass);
-    // screenLogin();
-    window.location.hash = '#/login';
-})
 
-document.getElementById("return-login").addEventListener("click", () => {
+    //Envia email para cambiar la contraseña del usuario
+    document.getElementById("btn_reset_pass").addEventListener("click", () => {
+        let emailResetPass = document.getElementById("emailResetPassword").value;
+        changePassword(emailResetPass);
+        window.location.hash = '#/login';
+    })
 
-    screenLogin();
-     window.location.hash = '#/login';
-})
-
+    //Devuelve al login
+    document.getElementById("return-login").addEventListener("click", () => {
+        screenLogin();
+        window.location.hash = '#/login';
+    })
 }

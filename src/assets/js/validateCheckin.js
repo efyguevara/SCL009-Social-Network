@@ -1,5 +1,5 @@
-export const validateNicknameCheckin = (nicknameCheckin)=> {
-    if (nicknameCheckin === ""|| nicknameCheckin.length === 0){
+export const validateNicknameCheckin = (nicknameCheckin) => {
+    if (nicknameCheckin === "" || nicknameCheckin.length === 0) {
         return false;
     }
     return true;

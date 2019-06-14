@@ -10,8 +10,12 @@
     display: grid;
     grid-gap: .5em;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
-    background-color: rgb(240, 240, 240);
+    grid-template-rows: repeat(3, auto);    
+    color: white;
+}
+
+body{
+    background: #ffffff;
 }
 
 
@@ -25,6 +29,7 @@ form.formfirt{
     padding-top: 0;
     /* border: .2rem solid #26a69a; */
 }
+
 #containerForm{
     display:flex;
     justify-content: center; 
@@ -33,16 +38,12 @@ form.formfirt{
     grid-row: 2/3;
 }
 
-
-/* Estilos de botones e inputs */
-#error-mail, #error-password{
-    font-size: 15px;
-    color: red;
-}
-
-
 #back{
     background: rgb(209, 203, 203);
+}
+
+#btn-checkin1{
+    margin-top: 1.875rem;
 }
 
 input, .button{
@@ -61,7 +62,7 @@ input, .button{
     opacity: 0.8;
     cursor: pointer;
     border-radius: .5rem;
-    margin-bottom: 0;
+    margin-bottom: 1.875rem;
 }
 
 .button.button[type="button"]:hover{
@@ -71,8 +72,6 @@ input, .button{
 .button.button[type="button"]:active{
     transform: scale(0.95);
 }
-
-
 
 /* Reutilizables */
 h2{
@@ -89,6 +88,7 @@ h2{
 }
 
 .err{
+    font-size: 15px;
     color: red;
 }
 
@@ -99,7 +99,7 @@ h2{
 footer{
     text-align: center;
     padding: 1.5em;
-    background-color: #8df1e6;
+    background-color: #03bea9;
     position: relative;
     margin-top: 20em;
 }

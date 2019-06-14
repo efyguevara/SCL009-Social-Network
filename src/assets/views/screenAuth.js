@@ -1,5 +1,5 @@
 // Pantalla que muestra el formulario de ingreso.
-import { checkin, login } from '../js/authFirebase.js';
+import { checkin } from '../js/authFirebase.js';
 import { validateNicknameCheckin, validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat } from '../js/validateCheckin.js';
 
 export const screenAuth = () => {
@@ -28,7 +28,7 @@ export const screenAuth = () => {
             <button type="button" class="button" id="btn-checkin2">Registrarse</button>
 
             <!-- Boton para volver al login -->
-            <button type="button" class="button" id="return-login">Volver</button>
+            <button type="button" class="button" id="back">Volver</button>
         </form>
       </div>
     </section>
@@ -72,6 +72,15 @@ export const screenAuth = () => {
     }
   });
 
+  //Resetea el error
+  document.getElementById('nickname').addEventListener('focus', () => {
+    let delErrMailCheckin = document.getElementById('error-nickname-checkin').value;
+    if (delErrMailCheckin != "") {
+      document.getElementById('error-nickname-checkin').innerHTML = "";
+    }
+  });
+
+  //Resetea el error
   document.getElementById('email').addEventListener('focus', () => {
     let delErrMailCheckin = document.getElementById('error-email-checkin').value;
     if (delErrMailCheckin != "") {
@@ -79,12 +88,15 @@ export const screenAuth = () => {
     }
   });
 
+  //Resetea el error
   document.getElementById("password").addEventListener('focus', () => {
     let delErrPassCheckin = document.getElementById('error-password-checkin').value;
     if (delErrPassCheckin != "") {
       document.getElementById("error-password-checkin").innerHTML = "";
     }
   })
+
+  //Resetea el error
   document.getElementById("password").addEventListener('focus', () => {
     let delErrPassCheckinRepeat = document.getElementById('error-password-repeat').value;
     if (delErrPassCheckinRepeat != "") {
@@ -94,9 +106,6 @@ export const screenAuth = () => {
 
   //Evento para volver al login desde la pantalla de registro
   document.getElementById("back").addEventListener("click", () => {
-    //modificar como hace el cambio de hash
     window.location.hash = '#/login';
   })
-
-  
 }
