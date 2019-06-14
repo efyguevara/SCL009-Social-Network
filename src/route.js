@@ -1,8 +1,8 @@
 //
-import { screenLogin } from '../assets/views/screenLogin.js';
-import { screenAuth } from '../assets/views/screenAuth.js';
-import { screenHome } from '../assets/views/screenHome.js';
-import { screenResetPassword } from '../assets/views/screenResetPassword.js';
+import { screenLogin } from './assets/views/screenLogin.js';
+import { screenAuth } from './assets/views/screenAuth.js';
+import { screenHome } from './assets/views/screenHome.js';
+import { screenResetPassword } from './assets/views/screenResetPassword.js';
 import { observer } from './assets/js/authFirebase.js';
 
 const changeRoute = (hash) => {
