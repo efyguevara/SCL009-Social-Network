@@ -20,7 +20,7 @@ body{
 
 
 /* Estilos del formulario */
-form{
+form.formfirt{
     Margin: 0rem;
     border-radius: 0.5rem;
     flex-direction: column; 
@@ -44,7 +44,7 @@ form{
     color: red;
 }
 
-input, button{
+input, .button{
     border-radius: .5rem;
     display: block;
     padding: 0.625rem;
@@ -53,7 +53,7 @@ input, button{
     font-size: 1.25rem;
 }
 
-button[type="button"]{
+.button.button[type="button"]{
     background: linear-gradient(#64d8cb, #03bea9);
     border:0;
     color: rgb(24, 23, 23);
@@ -63,11 +63,11 @@ button[type="button"]{
     margin-bottom: 0;
 }
 
-button[type="button"]:hover{
+.button.button[type="button"]:hover{
     opacity: 1;
 }
 
-button[type="button"]:active{
+.button.button[type="button"]:active{
     transform: scale(0.95);
 }
 
@@ -105,7 +105,7 @@ h2{
     .root-container{     
         grid-template-columns: repeat(15, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
@@ -131,7 +131,7 @@ h2{
     .root-container{     
         grid-template-columns: repeat(9, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
@@ -157,7 +157,7 @@ h2{
     .root-container{     
         grid-template-columns: repeat(5, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
@@ -182,7 +182,7 @@ h2{
     .root-container{     
         grid-template-columns: repeat(3, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
