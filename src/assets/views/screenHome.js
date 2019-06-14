@@ -23,7 +23,7 @@ export const screenHome = () => {
                 </div>
             </div>
         </div>
-    </header> 
+</header> 
 
     <!-- posts -->
 <container>

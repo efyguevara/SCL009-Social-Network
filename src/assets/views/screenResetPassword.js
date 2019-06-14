@@ -1,4 +1,6 @@
-import { changePassword } from '../js/authFirebase.js'; 
+import { changePassword } from '../js/authFirebase.js';
+import { screenLogin } from '../views/screenLogin.js'
+
 
 export const screenResetPassword = () => {
 
@@ -25,7 +27,9 @@ document.getElementById('root').innerHTML =
     </section>
     `;
 document.getElementById("btn_reset_pass").addEventListener("click", () => {
-    changePassword();
-    window.location.hash = '#/login';
+    let emailResetPass = document.getElementById("emailResetPassword").value;
+    changePassword(emailResetPass);
+    screenLogin();
+    // window.location.hash = '#/login';
 })
 }

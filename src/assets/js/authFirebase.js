@@ -1,7 +1,6 @@
 import { notifyError } from '../js/notifications.js';
 import { screenHome } from '../views/screenHome.js';
-// import { screenLogin } from '../views/screenLogin.js';
-// import { screenResetPassword } from '../views/screenResetPassword.js';
+
 
 //Ingreso con google
 export const authGoogle = () => {
@@ -43,6 +42,7 @@ export const checkin = (emailCheckin, passwordCheckin) => {
   firebase.auth().createUserWithEmailAndPassword(emailCheckin, passwordCheckin)
     .then(() => {
       let user = firebase.auth().currentUser;
+
       user.sendEmailVerification()
         .then(() => {
           //Envía al correo
@@ -120,7 +120,7 @@ export const observer = () => {
     else {
       //window.location.hash = '#/login'
       console.log("No existe usuario activo");
-      window.location.hash = '#/login'
+      window.location.hash = '#/login';
     }
   });
 }
@@ -140,18 +140,20 @@ export const verifiedEmail = (user) => {
 }
 
 
-export const changePassword = (email) => {
+export const changePassword = (emailResetPass) => {
+  console.log("entra en el changePassword")
   let auth = firebase.auth();
-  let emailAddress = email;
-
+  let emailAddress = emailResetPass;
+console.log(emailAddress)
   auth.sendPasswordResetEmail(emailAddress)
+
     .then(() => {
       console.log("Enviando correo para cambiar contraseña")
 
     }).catch(error => {
       console.log("ocurrio un error al eenviar el email")
       let errorCode = error.code;
-      //      notifyError(errorCode, );
+      notifyError(errorCode, 'error-mail');
 
     });
 }
@@ -167,6 +169,7 @@ const saveUserInData = (user) => {
   firebase.database().ref('Users/' + user.uid).set(users);
 };
 
+
 // Guardando los post de mis usuarios con su respectivo Uid.
 export const savePostInData = (post) => {
   let userPost = {
@@ -177,17 +180,6 @@ export const savePostInData = (post) => {
   };
   firebase.database().ref('userPost/' + post.text).on(userPost);
 };
-
-// export const savePostInData = (post) => {
-//   let userPost = {
-//     // uid:user.uid,
-//     // name:user.displayName,
-//     // date:post.date,
-//     text:post.text
-//   };
-//   firebase.database().ref('userPost/'+post.text).on(userPost);
-// };
-
 
 //Cesar sesión
 export const closed = () => {
