@@ -1,6 +1,6 @@
 // Pantalla que muestra el home con los posts.
 import { closed } from '../js/authFirebase.js';
-
+import { postUsers } from '../js/posts.js';
 
 export const screenHome = () => {
     document.getElementById('root').innerHTML =
@@ -12,9 +12,9 @@ export const screenHome = () => {
                     <h1 class="logo">Logo <span>Empresa</span></h1>
                     <nav id="site-nav" class="site-nav">
                         <ul>
-                            <li><a href=""><i class="fa fa-home site-nav--icon" id="mi_perfil"></i>Mi perfil</a></li>
-                            <li><a href=""><i class="fa fa-home site-nav--icon" id="muro"></i>Muro</a></li>
-                            <li><a href=""><i class="fa fa-home site-nav--icon" id="closed"></i>Cerrar sesión</a></li>
+                            <li><a href="" id="mi_perfil"><i class="fa fa-home site-nav--icon"></i>Mi perfil</a></li>
+                            <li><a href="" id="muro"><i class="fa fa-home site-nav--icon"></i>Muro</a></li>
+                            <li><a href="" id="closed"><i class="fa fa-home site-nav--icon"></i>Cerrar sesión</a></li>
                         </ul>
                     </nav>
                     <div id="menu-toggle" class="menu-toggle">
@@ -28,8 +28,8 @@ export const screenHome = () => {
     <!-- posts -->
 <container>
     <div id="create_post">
-        <textarea name="" id="text_post" cols="30" rows="10" placeholder="¿Qué estás pensando?"></textarea>
-        <button id="send">Enviar</button>
+        <textarea id="post" cols="30" rows="10" placeholder="¿Qué estás pensando?"></textarea>
+        <button type="button" id="sendpost">Enviar</button>
     </div>
 </container>
     `;
@@ -40,11 +40,10 @@ export const screenHome = () => {
         document.getElementById('menu-toggle').classList.toggle('menu-open');
     })
 
-    document.getElementById('send').addEventListener('click', () => {
-        let post = document.getElementById('text_post').value;
-        console.log(post);
-        document.getElementById('')
-        savePostInData();
+    document.getElementById('sendpost').addEventListener('click', () => {
+        let post = document.getElementById('post').value;
+        postUsers(post);
+        
     })
 
     // Evento para ingresar con cuenta de correo de google.
