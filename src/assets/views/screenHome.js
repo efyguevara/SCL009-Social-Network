@@ -3,7 +3,6 @@ import { closed } from '../js/authFirebase.js';
 
 
 export const screenHome = () => {
-
     document.getElementById('root').innerHTML =
         `
     <header>
@@ -43,13 +42,16 @@ export const screenHome = () => {
 
     document.getElementById('send').addEventListener('click', () => {
         let post = document.getElementById('text_post').value;
-        // document.getElementById('')
-        // savePostInData();
+        console.log(post);
+        document.getElementById('')
+        savePostInData();
     })
 
     // Evento para ingresar con cuenta de correo de google.
     document.getElementById('closed').addEventListener('click', () => {
         console.log("hola");
         closed();
+        window.location.hash = '#/login'
+        observer();
     });
 };
