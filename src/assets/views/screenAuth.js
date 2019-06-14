@@ -39,6 +39,7 @@ export const screenAuth = () => {
     let errPassCheckin = "Por favor ingresa una contraseña válida";
     let errPassRepeat = "Las contraseñas ingresadas no coinciden";
 
+    let nicknameCheckin = document.getElementById("nickname").value;
     let emailCheckin = document.getElementById("email").value;
     let passwordCheckin = document.getElementById("password");
     let passwordRepeat = document.getElementById("password_repeat");
@@ -48,7 +49,7 @@ export const screenAuth = () => {
     let resultValidatePasswordRepeat = validatePasswordRepeat(passwordRepeat.value, passwordCheckin.value);
 
     if (resultValidateEmailCheckin === true && resultValidatePasswordCheckin === true && resultValidatePasswordRepeat === true) {
-      checkin(emailCheckin, passwordCheckin.value);
+      checkin(nicknameCheckin, emailCheckin, passwordCheckin.value);
     }
     if (resultValidateEmailCheckin === false) {
       document.getElementById("error-email-checkin").innerHTML = `${errMailCheckin}`;
@@ -69,4 +70,6 @@ export const screenAuth = () => {
     //modificar como hace el cambio de hash
     window.location.hash = '#/login';
   })
+
+  
 }

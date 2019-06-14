@@ -16,7 +16,7 @@ const authentication = (provider) => {
 
       let user = result.user;
       console.log(result);
-      saveUserInData(user);
+      //saveUserInData(user);
 
     }).catch((error) => {
       // Handle Errors here.
@@ -33,14 +33,32 @@ const authentication = (provider) => {
     });
 }
 
+//Función que salva datos del usuario
+const saveUsers = (name, email,uid) => {
+
+var db = firebase.firestore();
+     // let uid = user.uid;
+  db.collection("users").add({
+    name: name,
+    email:email,
+    uid:uid
+  })
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+    console.error("Error adding document: ", error);
+  });
+}
 
 //Registro de usuario nuevo con correo y contraseña;
-export const checkin = (emailCheckin, passwordCheckin) => {
+export const checkin = (nicknameCheckin, emailCheckin, passwordCheckin) => {
   console.log(emailCheckin);
   console.log(passwordCheckin);
   firebase.auth().createUserWithEmailAndPassword(emailCheckin, passwordCheckin)
     .then(() => {
       let user = firebase.auth().currentUser;
+      let uid = user.uid;
 
       user.sendEmailVerification()
         .then(() => {
@@ -50,7 +68,10 @@ export const checkin = (emailCheckin, passwordCheckin) => {
           //Si ocurre un error
           console.log(error);
         });
-      window.location.hash = '#/login';
+        observer();
+        saveUsers(nicknameCheckin, emailCheckin, uid);
+        window.location.hash = '#/login';
+      
     })
     .catch((error) => {
 
@@ -99,7 +120,7 @@ export const observer = () => {
       console.log(user)
       verifiedEmail(user);
       console.log("Existe usuario activo");
-
+      
       let displayName = user.displayName;
       let email = user.email;
 
@@ -112,7 +133,7 @@ export const observer = () => {
       let uid = user.uid;
       let providerData = user.providerData;
       // User is signed in.
-      saveUserInData(user);
+     //saveUserInData(user);
     }
     else{
       console.log("No existe usuario activo");
@@ -155,32 +176,34 @@ console.log(emailAddress)
 }
 
 //   Guardando a mis usuarios en firestore automáticamente
-const saveUserInData = (user) => {
-  let users = {
-    uid: user.uid,
-    name: user.displayName,
-    email: user.email,
-    photoURL: user.photoURL,
-  };
-  firebase.database().ref('Users/' + user.uid).set(users);
-};
+// const saveUserInData = (user) => {
+//   let users = {
+//     uid: user.uid,
+//     name: user.displayName,
+//     email: user.email,
+//     photoURL: user.photoURL,
+//   };
+//   firebase.database().ref('Users/' + user.uid).set(users);
+// };
 
 
 // Guardando los post de mis usuarios con su respectivo Uid.
-export const savePostInData = (post) => {
-  let userPost = {
+// export const savePostInData = (post) => {
+//   let userPost = {
     // uid:user.uid,
     // name:user.displayName,
     // date:post.date,
     // text:post.text
-    text: post.text
-  };
-  firebase.database().ref('userPost/' + post.text).on(userPost);
-};
+//     text: post.text
+//   };
+//   firebase.database().ref('userPost/' + post.text).on(userPost);
+// };
 
 //Cesar sesión
 export const closed = () => {
   firebase.auth().signOut().then(() => {
+    
+    window.location.hash = '#/login';
     console.log("Saliendo...");
     // Sign-out successful.
   }).catch((error) => {
