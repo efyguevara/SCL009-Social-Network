@@ -14,45 +14,41 @@ const authentication = (provider) => {
       window.location.hash = '#/home';
 
       let token = result.credential.accessToken;
-
       let user = result.user;
       console.log(result);
-      //saveUserInData(user);
-
     }).catch((error) => {
-      // Handle Errors here.
+
       let errorCode = error.code;
       console.log(errorCode);
       let errorMessage = error.message;
       console.log(errorMessage);
-      // The email of the user's account used.
+
       let mail = error.mail;
       console.log(mail);
-      // The firebase.auth.AuthCredential type that was used.
+
       let credential = error.credential;
       console.log(credential);
     });
 }
 
 //Función que salva datos del usuario
-const saveUsers = (name, email,uid) => {
+const saveUsers = (name, email, uid) => {
 
-var db = firebase.firestore();
-     // let uid = user.uid;
+  var db = firebase.firestore();
   db.collection("users").add({
     name: name,
-    email:email,
-    uid:uid
+    email: email,
+    uid: uid
   })
-  .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-    console.error("Error adding document: ", error);
-  });
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
 }
 
-//Registro de usuario nuevo con correo y contraseña;
+//Registro de usuario nuevo con correo y contraseña
 export const checkin = (nicknameCheckin, emailCheckin, passwordCheckin) => {
   console.log(emailCheckin);
   console.log(passwordCheckin);
@@ -63,20 +59,16 @@ export const checkin = (nicknameCheckin, emailCheckin, passwordCheckin) => {
 
       user.sendEmailVerification()
         .then(() => {
-          //Envía al correo
           console.log("Enviando correo...");
         }).catch((error) => {
-          //Si ocurre un error
           console.log(error);
         });
-        observer();
-        saveUsers(nicknameCheckin, emailCheckin, uid);
-        window.location.hash = '#/login';
-      
+      observer();
+      saveUsers(nicknameCheckin, emailCheckin, uid);
+      window.location.hash = '#/login';
+
     })
     .catch((error) => {
-
-      //Si ocurre un error
       let errorCode = error.code;
       let errorMessage = error.message;
       console.log(errorMessage);
@@ -99,7 +91,6 @@ export const login = (emailLogin, passwordLogin) => {
       }
     })
     .catch((error) => {
-      // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log(errorCode);
@@ -113,15 +104,14 @@ export const login = (emailLogin, passwordLogin) => {
     });
 }
 
-
-//observa...
+//Observa cambios de estado del usuario
 export const observer = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log(user)
       verifiedEmail(user);
       console.log("Existe usuario activo");
-      
+
       let displayName = user.displayName;
       let email = user.email;
 
@@ -133,7 +123,7 @@ export const observer = () => {
       let photoUrl = user.photoURL;
       let uid = user.uid;
       let providerData = user.providerData;
-      // User is signed in.
+
       saveUserInData(user);
     }
     else {
@@ -142,7 +132,6 @@ export const observer = () => {
     }
   });
 }
-
 
 //Verifica que el usuario confirmo el email del registro antes de poder ingresar
 export const verifiedEmail = (user) => {
@@ -157,8 +146,7 @@ export const verifiedEmail = (user) => {
     closed();
   }
 }
-
-
+//Cambiar contraseña
 export const changePassword = (emailResetPass) => {
   console.log("entra en el changePassword");
   let auth = firebase.auth();
@@ -177,48 +165,24 @@ export const changePassword = (emailResetPass) => {
 
     .catch(error => {
       if (error.code === "auth/invalid-email") {
-      console.log("ocurrio un error al enviar el email");
-      let errorCode = error.code;
-      console.log(errorCode)
-    
-      notifyError(errorCode, 'error-mail-reset-pass');
-    }
+        console.log("ocurrio un error al enviar el email");
+        let errorCode = error.code;
+        console.log(errorCode)
+
+        notifyError(errorCode, 'error-mail-reset-pass');
+      }
     });
 }
-
-//   Guardando a mis usuarios en firestore automáticamente
-// const saveUserInData = (user) => {
-//   let users = {
-//     uid: user.uid,
-//     name: user.displayName,
-//     email: user.email,
-//     photoURL: user.photoURL,
-//   };
-//   firebase.database().ref('Users/' + user.uid).set(users);
-// };
-
-
-// Guardando los post de mis usuarios con su respectivo Uid.
-// export const savePostInData = (post) => {
-//   let userPost = {
-    // uid:user.uid,
-    // name:user.displayName,
-    // date:post.date,
-    // text:post.text
-//     text: post.text
-//   };
-//   firebase.database().ref('userPost/' + post.text).on(userPost);
-// };
 
 //Cesar sesión
 export const closed = () => {
   firebase.auth().signOut().then(() => {
-    
+
     window.location.hash = '#/login';
     console.log("Saliendo...");
-    // Sign-out successful.
+
   }).catch((error) => {
     console.log(error);
-    // An error happened.
+
   });
 }

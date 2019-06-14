@@ -29,16 +29,10 @@ export const screenLogin = () => {
 
                 <!-- Enlace para registro de nuevos usuarios -->
                 <a href="#/auth" id="btn-checkin1" class="textBlack">¿No tienes cuenta? Registrate aqui.</a>
-
-                
-                <!-- boton para registro de nuevos usuarios -->
-                <button type="button" class="button" id="btn-checkin1">Registrarse</button>
             </form>
         </div>
     </section>
     `;
-
- 
 
   //Restablecer la contraseña
   document.getElementById('changePassword').addEventListener('click', () => {
@@ -57,7 +51,7 @@ export const screenLogin = () => {
 
   //Evento para ingresar con usuario y contraseña (valida que el maiol y la contraseña sean validos y manda mjs de error si no lo son)
   document.getElementById('btn-login').addEventListener('click', () => {
-    
+
     let errMail = "Por favor ingresa un email válido";
     let errPass = "Por favor ingresa una contraseña válida";
 
@@ -75,19 +69,21 @@ export const screenLogin = () => {
     }
     if (resultValidatePassword === false) {
       document.getElementById("error-password").innerHTML = `${errPass}`;
-    }  
+    }
   });
 
+  //Resetea el error
   document.getElementById('email_Login').addEventListener('focus', () => {
     let delErrMail = document.getElementById('error-mail').value;
-    if(delErrMail != ""){
+    if (delErrMail != "") {
       document.getElementById('error-mail').innerHTML = "";
     }
   });
 
+  //Resetea el error
   document.getElementById("password_Login").addEventListener('focus', () => {
     let delErrPass = document.getElementById('error-password').value;
-    if (delErrPass != ""){
+    if (delErrPass != "") {
       document.getElementById("error-password").innerHTML = "";
     }
   })
