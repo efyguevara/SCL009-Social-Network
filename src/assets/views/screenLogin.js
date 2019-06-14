@@ -5,7 +5,6 @@ import { screenResetPassword } from '../views/screenResetPassword.js';
 
 
 export const screenLogin = () => {
-  // closed();
   document.getElementById('root').innerHTML =
     `
     <section class="root-container">
@@ -28,17 +27,23 @@ export const screenLogin = () => {
                 <!-- boton para ingresar por Google -->
                 <button type="button" id="buttonGoogle" value="Iniciar sesión con Google">Iniciar sesión con Google</button>
 
+                <!-- Enlace para registro de nuevos usuarios -->
+                <a href="#/auth" id="btn-checkin1" class="textBlack">¿No tienes cuenta? Registrate aqui.</a>
+
+                
                 <!-- boton para registro de nuevos usuarios -->
-                <button type="button" id="btn-checkin1">Registrarse</button>
+                <!--<button type="button" id="btn-checkin1">Registrarse</button>-->
             </form>
         </div>
     </section>
     `;
 
+ 
+
   //Restablecer la contraseña
-  document.getElementById('changePassword').addEventListener("click", () => {
+  document.getElementById('changePassword').addEventListener('click', () => {
     screenResetPassword();
-  })
+  });
 
   //Evento para ingresar con cuenta de correo de google.
   document.getElementById('buttonGoogle').addEventListener('click', () => {
@@ -47,7 +52,7 @@ export const screenLogin = () => {
 
   //Evento para registrar un nuevo usuario
   document.getElementById("btn-checkin1").addEventListener('click', () => {
-    window.location.hash = '#/auth'
+    window.location.hash = '#/auth';
   });
 
   //Evento para ingresar con usuario y contraseña (valida que el maiol y la contraseña sean validos y manda mjs de error si no lo son)
@@ -72,4 +77,18 @@ export const screenLogin = () => {
       document.getElementById("error-password").innerHTML = `${errPass}`;
     }  
   });
+
+  document.getElementById('email_Login').addEventListener('focus', () => {
+    let delErrMail = document.getElementById('error-mail').value;
+    if(delErrMail != ""){
+      document.getElementById('error-mail').innerHTML = "";
+    }
+  });
+
+  document.getElementById("password_Login").addEventListener('focus', () => {
+    let delErrPass = document.getElementById('error-password').value;
+    if (delErrPass != ""){
+      document.getElementById("error-password").innerHTML = "";
+    }
+  })
 };

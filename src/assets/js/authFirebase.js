@@ -1,5 +1,6 @@
 import { notifyError } from '../js/notifications.js';
 import { screenHome } from '../views/screenHome.js';
+import { screenLogin } from '../views/screenLogin.js';
 
 //Ingreso con google
 export const authGoogle = () => {
@@ -133,9 +134,9 @@ export const observer = () => {
       let uid = user.uid;
       let providerData = user.providerData;
       // User is signed in.
-     //saveUserInData(user);
+      saveUserInData(user);
     }
-    else{
+    else {
       console.log("No existe usuario activo");
       window.location.hash = '#/login';
     }
@@ -153,25 +154,35 @@ export const verifiedEmail = (user) => {
   if (!user2.emailVerified) {
     console.log("Por favor verifica tu cuenta antes de ingresar");
     notifyError("auth/invalid-email-verified", 'error-mail');
-  }deleErrMail();
+    closed();
+  }
 }
 
 
 export const changePassword = (emailResetPass) => {
-  console.log("entra en el changePassword")
+  console.log("entra en el changePassword");
   let auth = firebase.auth();
   let emailAddress = emailResetPass;
-console.log(emailAddress)
+  console.log(emailAddress)
   auth.sendPasswordResetEmail(emailAddress)
+    .then((log) => {
+      verifiedEmail();
+      if (log.user.emailVerified) {
+        screenLogin();
+        console.log("Enviando correo para cambiar contraseña");
+      } else {
+        window.location.hash = '#/resetPassword';
+      }
+    })
 
-    .then(() => {
-      console.log("Enviando correo para cambiar contraseña")
-
-    }).catch(error => {
-      console.log("ocurrio un error al eenviar el email")
+    .catch(error => {
+      if (error.code === "auth/invalid-email") {
+      console.log("ocurrio un error al enviar el email");
       let errorCode = error.code;
-      notifyError(errorCode, 'error-mail');
-
+      console.log(errorCode)
+    
+      notifyError(errorCode, 'error-mail-reset-pass');
+    }
     });
 }
 
