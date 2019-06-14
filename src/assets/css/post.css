@@ -1,32 +1,43 @@
-.section{
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 60%;
+/* Configuración de grid en pantalla de post */
+.screen_post{
+    display: grid;
+    grid-gap: .5em;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);
+    background-color: rgb(240, 240, 240);
 }
 
-.formpost{
+header{
+    grid-column: span 3;
+    grid-row: 1;
+    display: flex;
+}
+
+.section{
     background: #C8DED6;
-    width: 180px;
+    width: 19em;
     font-family: sans-serif;
     text-align: center;
-    padding: 0rem .1rem 3rem .1rem; 
+    grid-column: span 3;
+    margin: 0 auto;
 }
 
 .textform{
     text-align: left;
     background: linear-gradient(#64d8cb, #03bea9);
     width: 100%;
-    text-align-last: right;
-    margin: 0rem 0rem 2rem 0rem;
-    padding: .5rem 1rem .5rem 1rem;
+    text-align-last: left;
+    margin: 0rem 0rem .3rem 0rem;
+    position: relative;
 }
 
 .textarea{
-	border: 1px #ddd solid;
-    width: 80%;
-    height: 50px;
+	border: .1em #ddd solid;
+    width: 95%;
+    height: 7em;
     font: 9pt Consolas;
     resize: none;
+    position: relative;
 }
 
 .div-button{
@@ -42,18 +53,42 @@
     cursor: pointer;
     border-radius: .5rem;
     margin-bottom: 0;
-    height:20px;
-    width: 100px;
+    height:2em;
+    width: 5em;
+    margin-left: 65%;
+    position: relative;
 }
 
-    @media (min-width:400px){
-        .section{
-            width: 60%;
-            margin: 0 auto;
-            margin-top: 30%;
-        }
+.show_old_posts{
+    grid-column: span 3;
+    grid-row: 3/4;
+}
 
-        .formpost{
-            width:auto;
-        }
+    /* Tamaños de pantalla */
+@media (max-width:2560px){
+}
+
+@media (max-width:1440px){
+}
+
+@media (min-width:768px){
+    .screen_post{
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(4, auto);
     }
+
+    header{
+        grid-column: span 12;
+    }
+
+    .section{
+        margin-top: 2em;
+        background: #C8DED6;
+        grid-column: span 12;
+        width: 30em;
+    }
+    
+    .buttonpost{
+        margin-left: 75%;
+    }
+}

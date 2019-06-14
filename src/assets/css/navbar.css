@@ -36,6 +36,7 @@ header::after{
     background: #26a69a;
     clip-path: circle(0px at top right);
     transition: clip-path ease-in-out 700ms; 
+    z-index: 1;
 }
 
 .site-nav-open{
@@ -108,6 +109,7 @@ color: rgba(255,255,255, .4);
     height: 3px;
     width: 1.75em;
     border-radius: 3px;
+
 }
 
 .hamburger::before{

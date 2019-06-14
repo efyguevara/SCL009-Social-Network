@@ -14,10 +14,6 @@
     background-color: rgb(240, 240, 240);
 }
 
-body{
-    background: #e9e9e9;
-}
-
 
 /* Estilos del formulario */
 form.formfirt{
@@ -105,6 +101,7 @@ footer{
     padding: 1.5em;
     background-color: #8df1e6;
     position: relative;
+    margin-top: 20em;
 }
 
 footer p{
