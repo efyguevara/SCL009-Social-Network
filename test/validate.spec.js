@@ -1,5 +1,5 @@
 import { validateEmail, validatePassword } from '../src/assets/js/validateLogin.js';
-import { validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat } from '../src/assets/js/validateCheckin.js';
+import { validateNicknameCheckin, validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat } from '../src/assets/js/validateCheckin.js';
 
 //Test para corroborar que el email ingresado cumpla con las condiciones de un correo válido
 describe("función validateEmail", () =>{
@@ -25,6 +25,15 @@ describe("función validatePassword", () => {
     })
 })
 
+//Test para corroborar que el usuario ingreso un nickname
+describe("función validateNicknameCheckin", () =>{
+    it("debería retornar false", () => {
+        expect(validateNicknameCheckin("")).toBe(false);
+    })
+    it("debería retornar true", () => {
+        expect(validateNicknameCheckin("Stefy")).toBe(true);
+    })
+})
 
 // Testea que el email ingresado en el checkin cumpla las condiciones de un email válido
 describe("función validateEmailCheckin", () =>{

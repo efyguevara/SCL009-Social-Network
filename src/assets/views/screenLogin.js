@@ -12,7 +12,7 @@ export const screenLogin = () => {
             <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
         </div>
         <div id="containerForm" class="container">
-            <form>
+            <form class="formfirt">
                 <input type="email" id="email_Login" placeholder="&#9993; correo@example.com" name="email">
                 <p id="error-mail" class="err"></p>
                 <input type="password" id="password_Login" placeholder="&#128272; Contraseña" name="password">
@@ -22,17 +22,17 @@ export const screenLogin = () => {
                 <a href="#/resetPassword" id="changePassword" class="textBlack">¿Olvidaste la contraseña?</a>
 
                 <!-- boton para iniciar sesion -->
-                <button type="button" id="btn-login" value="Iniciar sesión">Iniciar sesión</button>
+                <button type="button" class="button" id="btn-login" value="Iniciar sesión">Iniciar sesión</button>
 
                 <!-- boton para ingresar por Google -->
-                <button type="button" id="buttonGoogle" value="Iniciar sesión con Google">Iniciar sesión con Google</button>
+                <button type="button" class="button" id="buttonGoogle" value="Iniciar sesión con Google">Iniciar sesión con Google</button>
 
                 <!-- Enlace para registro de nuevos usuarios -->
                 <a href="#/auth" id="btn-checkin1" class="textBlack">¿No tienes cuenta? Registrate aqui.</a>
 
                 
                 <!-- boton para registro de nuevos usuarios -->
-                <!--<button type="button" id="btn-checkin1">Registrarse</button>-->
+                <button type="button" class="button" id="btn-checkin1">Registrarse</button>
             </form>
         </div>
     </section>

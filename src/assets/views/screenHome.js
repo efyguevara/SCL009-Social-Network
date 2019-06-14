@@ -26,12 +26,15 @@ export const screenHome = () => {
 </header> 
 
     <!-- posts -->
-<container>
-    <div id="create_post">
-        <textarea id="post" cols="30" rows="10" placeholder="¿Qué estás pensando?"></textarea>
-        <button type="button" id="sendpost">Enviar</button>
+    <section class="section">
+    <div class="container">
+        <form class="formpost">
+            <div class="textform">Nombre de usuario</div>
+            <textarea id="post" class="textarea" placeholder="¿Qué estás pensando?"></textarea>
+            <div class="div-button"> <button class="buttonpost" type="button"  id="sendpost">Post</button> </div>
+        </form>   
     </div>
-</container>
+</section>
     `;
 
     // Cambio de clase al navbar.

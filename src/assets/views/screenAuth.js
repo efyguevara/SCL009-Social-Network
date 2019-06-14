@@ -1,6 +1,6 @@
 // Pantalla que muestra el formulario de ingreso.
 import { checkin, login } from '../js/authFirebase.js';
-import { validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat } from '../js/validateCheckin.js';
+import { validateNicknameCheckin, validateEmailCheckin, validatePasswordCheckin, validatePasswordRepeat } from '../js/validateCheckin.js';
 
 export const screenAuth = () => {
   document.getElementById('root').innerHTML =
@@ -10,9 +10,10 @@ export const screenAuth = () => {
           <a href="#"> <img src="assets/img/petlogo.png" alt="Logo Pet Lovers"></a>
       </div>
       <div id="containerForm" class="container">
-        <form>
+        <form class="formfirt">
             <h2>Formulario de registro</h2>
             <input type="text" id="nickname" placeholder="Nombre de usuario" name="nickname">
+            <p id="error-nickname-checkin" class="err"></p>
 
           <input type="email" id="email" placeholder="&#9993; correo@example.com" name="email">
           <p id="error-email-checkin" class="err"></p>
@@ -24,10 +25,10 @@ export const screenAuth = () => {
             <p id="error-password-repeat" class="err"></p>
 
             <!-- Boton para registrar nuevo usuario -->
-            <button type="button" id="btn-checkin2">Registrarse</button>
+            <button type="button" class="button" id="btn-checkin2">Registrarse</button>
 
             <!-- Boton para volver al login -->
-            <button type="button" id="back">Volver</button>
+            <button type="button" class="button" id="return-login">Volver</button>
         </form>
       </div>
     </section>
@@ -35,6 +36,8 @@ export const screenAuth = () => {
 
   // Evento para ingresar con cuenta de correo de google.  
   document.getElementById("btn-checkin2").addEventListener('click', () => {
+
+    let errNicknameChekin = "Por favor ingrese un nombre";
     let errMailCheckin = "Por favor ingresa un email válido";
     let errPassCheckin = "Por favor ingresa una contraseña válida";
     let errPassRepeat = "Las contraseñas ingresadas no coinciden";
@@ -44,12 +47,16 @@ export const screenAuth = () => {
     let passwordCheckin = document.getElementById("password");
     let passwordRepeat = document.getElementById("password_repeat");
 
+    let resultValidateNicknameCheckin = validateNicknameCheckin(nicknameCheckin);
     let resultValidateEmailCheckin = validateEmailCheckin(emailCheckin);
     let resultValidatePasswordCheckin = validatePasswordCheckin(passwordCheckin.value);
     let resultValidatePasswordRepeat = validatePasswordRepeat(passwordRepeat.value, passwordCheckin.value);
 
-    if (resultValidateEmailCheckin === true && resultValidatePasswordCheckin === true && resultValidatePasswordRepeat === true) {
+    if (resultValidateNicknameCheckin === true && resultValidateEmailCheckin === true && resultValidatePasswordCheckin === true && resultValidatePasswordRepeat === true) {
       checkin(nicknameCheckin, emailCheckin, passwordCheckin.value);
+    }
+    if (resultValidateNicknameCheckin === false) {
+      document.getElementById("error-nickname-checkin").innerHTML = `${errNicknameChekin}`;
     }
     if (resultValidateEmailCheckin === false) {
       document.getElementById("error-email-checkin").innerHTML = `${errMailCheckin}`;

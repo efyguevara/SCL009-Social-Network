@@ -11,16 +11,16 @@
     grid-gap: .5em;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
-    color: white;
+    background-color: rgb(240, 240, 240);
 }
 
 body{
-    background: #ffffff;
+    background: #e9e9e9;
 }
 
 
 /* Estilos del formulario */
-form{
+form.formfirt{
     Margin: 0rem;
     border-radius: 0.5rem;
     flex-direction: column; 
@@ -44,11 +44,12 @@ form{
     color: red;
 }
 
+
 #back{
     background: rgb(209, 203, 203);
 }
 
-input, button{
+input, .button{
     border-radius: .5rem;
     display: block;
     padding: 0.625rem;
@@ -57,7 +58,7 @@ input, button{
     font-size: 1.25rem;
 }
 
-button[type="button"]{
+.button.button[type="button"]{
     background: linear-gradient(#64d8cb, #03bea9);
     border:0;
     color: rgb(24, 23, 23);
@@ -67,11 +68,11 @@ button[type="button"]{
     margin-bottom: 0;
 }
 
-button[type="button"]:hover{
+.button.button[type="button"]:hover{
     opacity: 1;
 }
 
-button[type="button"]:active{
+.button.button[type="button"]:active{
     transform: scale(0.95);
 }
 
@@ -110,12 +111,13 @@ footer p{
     font-size: 1.2em;
 }
 
+
 /* Tamaños de pantalla */
 @media (max-width:2560px){
     .root-container{     
         grid-template-columns: repeat(15, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
@@ -141,7 +143,7 @@ footer p{
     .root-container{     
         grid-template-columns: repeat(9, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
@@ -167,7 +169,7 @@ footer p{
     .root-container{     
         grid-template-columns: repeat(5, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
@@ -192,7 +194,7 @@ footer p{
     .root-container{     
         grid-template-columns: repeat(3, 1fr);
     }
-    form{
+    form.formfirt{
         width: 95%;
     }
     #containerForm{
