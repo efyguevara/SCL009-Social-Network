@@ -10,7 +10,7 @@ export const screenHome = () => {
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="logo">Logo <span>Empresa</span></h1>
+                <img src="assets/img/logosinletra.png" class="logo" alt="Logo Pet Lovers">
                     <nav id="site-nav" class="site-nav">
                         <ul>
                             <li><a href="" id="mi_perfil">Mi perfil</a></li>

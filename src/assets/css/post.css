@@ -65,6 +65,14 @@ header{
     grid-row: 3/4;
 }
 
+footer{
+    text-align: center;
+    padding: 1.5em;
+    background-color: #8df1e6;
+    position: relative;
+    margin-top: 20em;
+}
+
 /* Tamaños de pantalla */
 @media (max-width:2560px){
 }

@@ -7,7 +7,6 @@
 header{
     background: #03bea9;
     color: #ebebd3;
-    padding: 1em 0;
     position: relative;
 }
 
@@ -19,14 +18,9 @@ header::after{
 
 .logo{
     float:left;
-    font-size: 1rem;
-    margin: 0;
-    text-transform: uppercase;
-    font-weight: 700;
-}
-
-.logo span{
-    font-weight: 300;
+    margin: .2em;
+    height: 5em;
+    width: 7em;
 }
 
 .site-nav{
@@ -51,6 +45,8 @@ list-style: none;
 
 .site-nav li{
     border-bottom: 1px solid #575766;
+    text-align: center;
+    display: flex; align-items: center; justify-content: center;
 }
 
 .site-nav li:last-child{
@@ -71,21 +67,13 @@ background: #e4b363;
 color:#26a69a;
 }
 
-.site-nav--icon{
-display: inline-block;
-font-size: 1.5em;
-margin-right: 1em;
-widows: 1.1em;
-text-align: right;
-color: rgba(255,255,255, .4);
-}
-
 .menu-toggle{
     background: #26a69a;
     padding: 1em;
     position: absolute;
     top: .5em;
     right: .5em;
+    margin-top: 1em;
 }
 
 .menu-open .hamburger{
@@ -109,7 +97,6 @@ color: rgba(255,255,255, .4);
     height: 3px;
     width: 1.75em;
     border-radius: 3px;
-
 }
 
 .hamburger::before{
@@ -131,31 +118,6 @@ body{
     font-family: sans-serif;
 }
 
-[class*="col-"]{
-    float: left;
-    min-height: 7px;
-    padding: 12px;
-}
-
-.col-1{width: 8.33333333%;}
-.col-2{width: 16.666667%;}
-.col-3{width: 25%;}
-.col-4{width: 33.333333%;}
-.col-5{width: 41.666667%;}
-.col-6{width: 50%;}
-.col-7{width: 58.33%;}
-.col-8{width: 66.6666667%;}
-.col-9{width: 75%;}
-.col-10{width: 83.3333333%;}
-.col-11{width: 91.6666667%;}
-.col-12{width: 100%;}
-
-@media all and (max-width:450px){
-    [class*="col-"]{
-        width: 100%;
-    }
-}
-
 @media (min-width:700px){
     .menu-toggle{
         display: none;
@@ -171,6 +133,7 @@ body{
     .site-nav li{
         display:inline-block;
         border: none;
+        padding-top: 2em;
     }
     .site-nav a{
         padding: 0;
